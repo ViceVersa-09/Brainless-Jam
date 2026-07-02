@@ -59,7 +59,6 @@ public class PlayerController : MonoBehaviour
         {
             if (littleGuy != null)
             {
-                Debug.Log("Little guy");
                 littleGuy.currentState = LittleGuy.State.FollowingPlayer;
             }
         }

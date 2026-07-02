@@ -8,6 +8,8 @@ public class LittleGuy : MonoBehaviour
     [Header("Following Player")]
     [SerializeField] float distance;
 
+    [HideInInspector] public Vector2 target;
+
     [HideInInspector] public enum State
     {
         FollowingPlayer,
@@ -33,11 +35,6 @@ public class LittleGuy : MonoBehaviour
     private void Update()
     {
         Behaviour();
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        
     }
 
     void Behaviour()
