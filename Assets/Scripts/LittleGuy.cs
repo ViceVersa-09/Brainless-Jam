@@ -8,8 +8,6 @@ public class LittleGuy : MonoBehaviour
     [Header("Following Player")]
     [SerializeField] float distance;
 
-    [HideInInspector] public Vector2 target;
-
     [HideInInspector] public enum State
     {
         FollowingPlayer,
