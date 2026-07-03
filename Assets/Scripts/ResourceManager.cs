@@ -5,6 +5,11 @@ public class ResourceManager : MonoBehaviour
 {
     [SerializeField] GameObject gates;
 
+    int wood;
+    int stone;
+    int currentWood;
+    int currentStone;
+
     GameManager gameManager;
 
     private void Start()
@@ -29,5 +34,12 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
+    void EndOfDayMaterials()
+    {
+        wood += currentWood;
+        currentWood = 0;
 
+        stone += currentStone;
+        currentStone = 0;
+    }
 }

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private TextMeshProUGUI dayCountText;
     [SerializeField] private TextMeshProUGUI breadCountText;
+    [SerializeField] GameObject summaryPrefab;
 
     [Header("Values")]
     [SerializeField] int startBread;
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
         pauseMenu = InputSystem.actions.FindAction("Pause");
 
         bread = startBread;
+        currentDay--;
         dayCountText.text = $"Day: {currentDay}";
         breadCountText.text = "Time until night: " + (bread * 15);
     }
@@ -118,5 +120,6 @@ public class GameManager : MonoBehaviour
         ResourceManager resourceManager = FindFirstObjectByType<ResourceManager>();
 
         resourceManager.CountBread();
+        Instantiate(summaryPrefab);
     }
 }
