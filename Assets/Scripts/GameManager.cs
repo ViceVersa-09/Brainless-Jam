@@ -5,9 +5,8 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance;
+    public static GameManager instance;
 
-    // OBS! antingen ge menyer och UI egna script eller ha det under gamemanager objektet
     [Header("References")]
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private TextMeshProUGUI dayCountText;
@@ -18,7 +17,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] int startBread;
 
     [HideInInspector] public int currentDay;
+    [HideInInspector] public int currentBread;
+
+
+    [HideInInspector] public int day;
     [HideInInspector] public int bread;
+    [HideInInspector] public int stone;
+    
     int dayTime;
 
     InputAction pauseMenu;
@@ -82,7 +87,7 @@ public class GameManager : MonoBehaviour
         dayCountText.text = $"Day: {currentDay}";
     }
     #endregion
-
+    #region Something
     IEnumerator Timer()
     {
         dayTime = bread * 15;
@@ -122,4 +127,5 @@ public class GameManager : MonoBehaviour
         resourceManager.CountBread();
         Instantiate(summaryPrefab);
     }
+    #endregion
 }
