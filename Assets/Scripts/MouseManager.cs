@@ -3,10 +3,9 @@ using UnityEngine.InputSystem;
 
 public class MouseManager : MonoBehaviour
 {
-    public SpriteRenderer interactableSpriterenderer;
-    public Interactable intereactable;
-    public Sprite interactableSprite;
-
+    SpriteRenderer interactableSpriterenderer;
+    Interactable intereactable;
+    Sprite interactableSprite;
 
     private void Update()
     {
