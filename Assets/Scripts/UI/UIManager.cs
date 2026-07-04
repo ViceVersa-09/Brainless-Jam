@@ -1,68 +1,79 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject nextDayButton;
-    [SerializeField] private GameObject statisticPopupMenu;
-    [SerializeField] private TextMeshProUGUI dayCountText;
-    [SerializeField] private TextMeshProUGUI breadCountText;
-    [SerializeField] private TextMeshProUGUI stoneCountText;
-    [SerializeField] private TextMeshProUGUI woodCountText;
+    public static UIManager instance;
 
-    private int timeCount;
-    private int delayTime;
+    [Header("UI References")]
+    public TextMeshProUGUI dayCountText;
 
-    private bool isHome;
+    [Header("Menu")]
+    public GameObject pauseScreen;
 
-    GameManager gameManager;
-    ResourceManager resourceManager;
+    [Header("GameObjects")]
+    public GameObject summaryPrefab;
+    public GameObject gates;
 
-    private void Start()
+    [Header("Material")]
+    public TextMeshProUGUI breadCountText;
+    public TextMeshProUGUI stoneCountText;
+    public TextMeshProUGUI woodCountText;
+
+    private void Awake()
     {
-        GameManager.instance = gameManager;
-        resourceManager = FindFirstObjectByType<ResourceManager>();
-    }
-    #region Statistics Menu
-    public void NextDay()
-    {
-        // if the player is at home but the day is not yet over
-        if (isHome && timeCount > 0)
+        if (instance != null && instance != this)
         {
-            // give the player the option to end the day or wait
+            Destroy(gameObject);
+            return;
         }
-        //if the player is home and the day is over
-        else if (isHome && timeCount <= 0)
-        {
-            StartCoroutine(PopupMenuAnimation());
-        }
+
+        instance = this;
+    }
+    #region UI
+    public void DayTextUI(string day)
+    {
+        if (dayCountText != null)
+            dayCountText.text = day;
     }
 
-    private IEnumerator PopupMenuAnimation()
+    public void BreadUI(string bread)
     {
-        statisticPopupMenu.SetActive(true);
-
-        breadCountText.text = $"Bread: {gameManager.bread}";
-        yield return new WaitForSeconds(delayTime);
-
-        stoneCountText.text = $"Stone: {resourceManager.stone}";
-        yield return new WaitForSeconds(delayTime);
-
-        stoneCountText.text = $"Wood: {resourceManager.wood}";
-        yield return new WaitForSeconds(delayTime);
-
-        dayCountText.text = $"Day: {gameManager.day}";
-        yield return new WaitForSeconds(delayTime);
-
-        nextDayButton.SetActive(true);
+        if (breadCountText != null)
+            breadCountText.text = bread;
     }
 
-    public void HideMenu()
+    public void StoneUI(string stone)
     {
-        statisticPopupMenu.SetActive(false);
-        nextDayButton.SetActive(false);
+        if (stoneCountText != null)
+            stoneCountText.text = stone;
+    }
+
+    public void WoodUI(string wood)
+    {
+        if (woodCountText != null)
+            woodCountText.text = wood;
     }
     #endregion
+    #region Menu
+    public void PauseMenu(bool value)
+    {
+        if (pauseScreen != null)
+            pauseScreen.SetActive(value);
+    }
+    #endregion
+    #region GameObjects
+    public void SummeryObject()
+    {
+        if (summaryPrefab != null)
+            Instantiate(summaryPrefab);
+    }
 
+    public void GateObject(bool value)
+    {
+        if (gates != null)
+            gates.SetActive(value);
+    }
+
+    #endregion
 }

@@ -7,18 +7,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [Header("References")]
-    [SerializeField] private GameObject pauseScreen;
-    [SerializeField] private TextMeshProUGUI dayCountText;
-    [SerializeField] private TextMeshProUGUI breadCountText;
-    [SerializeField] GameObject summaryPrefab;
-
     [Header("Values")]
     [SerializeField] int startBread;
 
     [HideInInspector] public int currentDay;
     [HideInInspector] public int currentBread;
-
 
     [HideInInspector] public int day;
     [HideInInspector] public int bread;
@@ -49,8 +42,8 @@ public class GameManager : MonoBehaviour
 
         bread = startBread;
         currentDay--;
-        dayCountText.text = $"Day: {currentDay}";
-        breadCountText.text = "Time until night: " + (bread * 15);
+        UIManager.instance.DayTextUI($"Day: {currentDay}");
+        UIManager.instance.BreadUI("Time until night: " + (bread * 15));
     }
 
     private void Update()
@@ -68,23 +61,13 @@ public class GameManager : MonoBehaviour
 
         if (pauseMenu.WasPressedThisFrame())
         {
-            bool isOpen = pauseScreen.activeSelf;
+            bool isOpen = UIManager.instance.pauseScreen.activeInHierarchy;
+            UIManager.instance.PauseMenu(!isOpen);
 
-            pauseScreen.SetActive(!isOpen);
+            UIManager.instance.pauseScreen.SetActive(!isOpen);
 
             Time.timeScale = !isOpen ? 0 : 1;
         }
-    }
-    #endregion
-    #region UI
-    void NextDay()
-    {
-        UIUpdate();
-    }
-
-    private void UIUpdate()
-    {
-        dayCountText.text = $"Day: {currentDay}";
     }
     #endregion
     #region Something
@@ -94,7 +77,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = dayTime; i >= 0; i--)
         {
-            breadCountText.text = "Time until night: " + i;
+            UIManager.instance.BreadUI("Time until night: " + i);
             yield return new WaitForSeconds(1);
 
             if (i == 0)
@@ -125,7 +108,7 @@ public class GameManager : MonoBehaviour
         ResourceManager resourceManager = FindFirstObjectByType<ResourceManager>();
 
         resourceManager.CountBread();
-        Instantiate(summaryPrefab);
+        UIManager.instance.SummeryObject();
     }
     #endregion
 }
