@@ -7,22 +7,39 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public class Day
+    {
+        public static int CurrentDay { get { return instance.day; } set { instance.day = value; } }
+        public static int CurrentTick { get { return instance.currentTick; } set { instance.currentTick = value; } }
+        public static float TimeUntilNight { get { return (instance.ticksPerDay - instance.currentTick) * instance.timePerTick - (instance.timeSinceDayStarted % instance.timePerTick); } }
+    }
+
     [Header("Values")]
     [SerializeField] int startBread;
 
-    [HideInInspector] public int currentDay;
+
+    [Header("Day")]
+    [SerializeField] float timePerTick = 10;
+    [SerializeField] int ticksPerDay = 24;
+
     [HideInInspector] public int currentBread;
 
     [HideInInspector] public int day;
     [HideInInspector] public int bread;
     [HideInInspector] public int stone;
-    
+
+    int currentDay;
     int dayTime;
+    int currentTick = 0;
+    float timeSinceDayStarted;
 
     InputAction pauseMenu;
+    UIManager uIManager;
 
     private void Awake()
     {
+        uIManager = FindFirstObjectByType<UIManager>();
+
         if (instance == null)
         {
             instance = this;
@@ -42,8 +59,8 @@ public class GameManager : MonoBehaviour
 
         bread = startBread;
         currentDay--;
-        UIManager.instance.DayTextUI($"Day: {currentDay}");
-        UIManager.instance.BreadUI("Time until night: " + (bread * 15));
+        uIManager.DayTextUI($"Day: {Day.CurrentDay}");
+        uIManager.BreadUI("Time until night: " + Day.TimeUntilNight);
     }
 
     private void Update()
@@ -61,10 +78,10 @@ public class GameManager : MonoBehaviour
 
         if (pauseMenu.WasPressedThisFrame())
         {
-            bool isOpen = UIManager.instance.pauseScreen.activeInHierarchy;
-            UIManager.instance.PauseMenu(!isOpen);
+            bool isOpen = uIManager.pauseScreen.activeInHierarchy;
+            uIManager.PauseMenu(!isOpen);
 
-            UIManager.instance.pauseScreen.SetActive(!isOpen);
+            uIManager.pauseScreen.SetActive(!isOpen);
 
             Time.timeScale = !isOpen ? 0 : 1;
         }
@@ -77,7 +94,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = dayTime; i >= 0; i--)
         {
-            UIManager.instance.BreadUI("Time until night: " + i);
+            uIManager.BreadUI("Time until night: " + i);
             yield return new WaitForSeconds(1);
 
             if (i == 0)
@@ -108,7 +125,7 @@ public class GameManager : MonoBehaviour
         ResourceManager resourceManager = FindFirstObjectByType<ResourceManager>();
 
         resourceManager.CountBread();
-        UIManager.instance.SummeryObject();
+        uIManager.SummeryObject();
     }
     #endregion
 }
