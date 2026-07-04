@@ -13,7 +13,7 @@ public class ResourceManager : MonoBehaviour
 
     GameManager gameManager;
 
-    private void Start()
+    private void Awake()
     {
         gameManager = GameManager.instance;
 

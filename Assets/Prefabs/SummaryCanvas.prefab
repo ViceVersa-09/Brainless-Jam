@@ -55,9 +55,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc1ded8f33786974eaff185faf4650ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Summary
+  rects:
+  - {fileID: 542628175818849592}
+  - {fileID: 3299782974673194858}
+  - {fileID: 2025780036223345217}
+  - {fileID: 2605411902306801999}
   startHeight: 550
-  moveSpeed: 10
-  slowDownTime: 5
+  moveSpeed: 2
+  slowDownTime: 1
   breadText: {fileID: 1982303780740374421}
   timeText: {fileID: 2317746941323407312}
   missionWoodText: {fileID: 6980280063434574927}
