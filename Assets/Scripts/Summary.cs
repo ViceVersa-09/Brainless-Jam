@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class Summary : MonoBehaviour
 {
     [Header("Moving")]
+    [SerializeField] RectTransform[] rects;
     [SerializeField] float startHeight;
     [SerializeField] float moveSpeed;
     [SerializeField] float slowDownTime;
@@ -25,38 +27,41 @@ public class Summary : MonoBehaviour
 
     ResourceManager resourceManager;
     GameManager gameManager;
-    RectTransform[] rects;
     Vector2[] ogPositions;
 
     private void Start()
     {
         resourceManager = FindFirstObjectByType<ResourceManager>();
         gameManager = GameManager.instance;
-        rects = GetComponentsInChildren<RectTransform>();
+        Array.Resize(ref ogPositions, rects.Length);
+
+        MovePopup();
     }
 
-    IEnumerator MovePopup()
+    void MovePopup()
     {
         for (int i = 0; i < rects.Length; i++)
         {
-            ogPositions[i] = rects[i].position;
-            Vector2 positionChanger = rects[i].position;
+            ogPositions[i] = rects[i].anchoredPosition;
+            Vector2 positionChanger = rects[i].anchoredPosition;
             positionChanger.y += startHeight;
-            rects[i].position = positionChanger;
-        }
+            rects[i].anchoredPosition = positionChanger;
 
+            StartCoroutine(RectMovement(rects[i], ogPositions[i]));
+        }
+    }
+
+    IEnumerator RectMovement(RectTransform rect, Vector2 ogPosition)
+    {
         for (int i = 0; i < 1; i++)
         {
-            foreach (var rect in rects)
-            {
-                rect.anchoredPosition = Vector2.MoveTowards(rect.anchoredPosition,
-                Vector2.Lerp(rect.anchoredPosition, Vector2.zero, slowDownTime * Time.deltaTime), moveSpeed);
+            rect.anchoredPosition = Vector2.MoveTowards(rect.anchoredPosition,
+                Vector2.Lerp(rect.anchoredPosition, ogPosition, slowDownTime * Time.deltaTime), moveSpeed);
 
-                if (rect.anchoredPosition.magnitude != 0)
-                {
-                    i--;
-                    yield return new WaitForEndOfFrame();
-                }
+            if (rect.anchoredPosition != ogPosition)
+            {
+                i--;
+                yield return new WaitForEndOfFrame();
             }
         }
     }
