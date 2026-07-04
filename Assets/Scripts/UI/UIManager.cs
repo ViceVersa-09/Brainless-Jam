@@ -8,17 +8,15 @@ public class UIManager : MonoBehaviour
     [Header("UI References")]
     public TextMeshProUGUI dayCountText;
 
-    [Header("Menu")]
+    //[Header("Menu")]
     public GameObject pauseScreen;
 
-    [Header("GameObjects")]
+    //[Header("GameObjects")]
     public GameObject summaryPrefab;
     public GameObject gates;
 
-    [Header("Material")]
+    //[Header("Material")]
     public TextMeshProUGUI breadCountText;
-    public TextMeshProUGUI stoneCountText;
-    public TextMeshProUGUI woodCountText;
 
     private void Awake()
     {
@@ -41,18 +39,6 @@ public class UIManager : MonoBehaviour
     {
         if (breadCountText != null)
             breadCountText.text = bread;
-    }
-
-    public void StoneUI(string stone)
-    {
-        if (stoneCountText != null)
-            stoneCountText.text = stone;
-    }
-
-    public void WoodUI(string wood)
-    {
-        if (woodCountText != null)
-            woodCountText.text = wood;
     }
     #endregion
     #region Menu
