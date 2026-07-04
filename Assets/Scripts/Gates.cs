@@ -7,11 +7,15 @@ public class Gates : MonoBehaviour
 
     GameManager gameManager;
     InputAction interactAction;
+    Animator animator;
+    BoxCollider2D gateCollider;
 
     private void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
         interactAction = InputSystem.actions.FindAction("Interact");
+        animator = GetComponent<Animator>();
+        gateCollider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -45,6 +49,8 @@ public class Gates : MonoBehaviour
     void OpenGates()
     {
         gameManager.StartGame();
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        animator.SetInteger("State", 1);
+        gateCollider.enabled = false;
     }
 }
