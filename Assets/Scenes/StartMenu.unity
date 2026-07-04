@@ -372,17 +372,17 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 296373503}
+  - component: {fileID: 296373504}
   - component: {fileID: 296373502}
   - component: {fileID: 296373501}
   - component: {fileID: 296373500}
-  - component: {fileID: 296373504}
   m_Layer: 5
   m_Name: Start Menu & Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &296373500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,12 +479,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a72122111feb4134fbc6b65317795811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonBehavior
+  masterSlider: {fileID: 1424666557}
+  musicSlider: {fileID: 1249466029}
+  sFXSlider: {fileID: 530288660}
   optionsMenu: {fileID: 1610044194}
   startMenu: {fileID: 1528688389}
-  startScene: 0
-  masterSlider: {fileID: 0}
-  musicSlider: {fileID: 0}
-  sFXSlider: {fileID: 0}
 --- !u!1 &391062740
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,7 +735,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 60, y: 0}
+  m_AnchoredPosition: {x: 60, y: -125}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &530288660
@@ -1860,7 +1859,7 @@ GameObject:
   - component: {fileID: 1249466028}
   - component: {fileID: 1249466029}
   m_Layer: 0
-  m_Name: Background Slider
+  m_Name: Music Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1886,7 +1885,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 60, y: -125}
+  m_AnchoredPosition: {x: 60, y: 0}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1249466029
@@ -2506,7 +2505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1528688390
 Transform:
   m_ObjectHideFlags: 0
@@ -2557,8 +2556,8 @@ Transform:
   - {fileID: 2000950165}
   - {fileID: 1820347819}
   - {fileID: 1424666556}
-  - {fileID: 530288659}
   - {fileID: 1249466028}
+  - {fileID: 530288659}
   m_Father: {fileID: 296373503}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1686322950
@@ -2590,7 +2589,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7228d5b3a90bbe2468d385a4b4b281d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  pauseScreen: {fileID: 0}
+  startBread: 0
+  currentDay: 0
+  currentBread: 0
+  day: 0
+  bread: 0
+  stone: 0
 --- !u!4 &1686322952
 Transform:
   m_ObjectHideFlags: 0
@@ -3265,6 +3269,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2804783331920237614, guid: 73678d5a0b61ccf4d947ac8ddd2837cb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112974226950050594, guid: 73678d5a0b61ccf4d947ac8ddd2837cb, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8798514285181115263, guid: 73678d5a0b61ccf4d947ac8ddd2837cb, type: 3}

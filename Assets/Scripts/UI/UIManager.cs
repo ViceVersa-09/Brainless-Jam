@@ -13,21 +13,25 @@ public class UIManager : MonoBehaviour
 
     //[Header("GameObjects")]
     public GameObject summaryPrefab;
-    public GameObject gates;
 
     //[Header("Material")]
     public TextMeshProUGUI breadCountText;
 
     private void Awake()
     {
-        if (instance != null && instance != this)
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
         {
             Destroy(gameObject);
             return;
         }
 
-        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
+
     #region UI
     public void DayTextUI(string day)
     {
@@ -53,12 +57,6 @@ public class UIManager : MonoBehaviour
     {
         if (summaryPrefab != null)
             Instantiate(summaryPrefab);
-    }
-
-    public void GateObject(bool value)
-    {
-        if (gates != null)
-            gates.SetActive(value);
     }
 
     #endregion

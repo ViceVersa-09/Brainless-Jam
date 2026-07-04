@@ -5,9 +5,6 @@ using UnityEngine.UI;
 public class ButtonBehavior : MonoBehaviour
 {
     #region Audio
-    [Header("Other")]
-    [SerializeField] private int startScene = 0;
-
     [Header("Sliders")]
     [SerializeField] Slider masterSlider;
     [SerializeField] Slider musicSlider;
@@ -17,11 +14,11 @@ public class ButtonBehavior : MonoBehaviour
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-        if (currentSceneIndex == 44)
+        if (currentSceneIndex == 0)
         {
-            masterSlider.value = PlayerPrefs.GetFloat("Master");
-            musicSlider.value = PlayerPrefs.GetFloat("Music");
-            sFXSlider.value = PlayerPrefs.GetFloat("SFX");
+            masterSlider.value = PlayerPrefs.GetFloat("Master", 1);
+            musicSlider.value = PlayerPrefs.GetFloat("Music", 1);
+            sFXSlider.value = PlayerPrefs.GetFloat("SFX", 1);
         }
     }
 

@@ -258,7 +258,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6760673329808638692}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonBehavior, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1
@@ -529,10 +529,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1057879535863171123}
+  - component: {fileID: -3234257604467359543}
   - component: {fileID: 6891952384897476152}
   - component: {fileID: 3662711575708471484}
   - component: {fileID: 5049230905975394205}
-  - component: {fileID: 6760673329808638692}
   m_Layer: 5
   m_Name: UI Canvas
   m_TagString: Untagged
@@ -562,6 +562,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &-3234257604467359543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5112974226950050594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74038aa213dd8847ab259dafa85d565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  dayCountText: {fileID: 7862305275506070082}
+  pauseScreen: {fileID: 2871310602929875322}
+  summaryPrefab: {fileID: 117734068653191793, guid: 6e5f4e391e287cd42951bd88be5df6e3, type: 3}
+  gates: {fileID: 0}
+  breadCountText: {fileID: 4185384652381438944}
 --- !u!223 &6891952384897476152
 Canvas:
   m_ObjectHideFlags: 0
@@ -625,24 +642,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6760673329808638692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5112974226950050594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a72122111feb4134fbc6b65317795811, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ButtonBehavior
-  optionsMenu: {fileID: 0}
-  startMenu: {fileID: 0}
-  startScene: 0
-  masterSlider: {fileID: 0}
-  musicSlider: {fileID: 0}
-  sFXSlider: {fileID: 0}
 --- !u!1 &7145034814618160943
 GameObject:
   m_ObjectHideFlags: 0
