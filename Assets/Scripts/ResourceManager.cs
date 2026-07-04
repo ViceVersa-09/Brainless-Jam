@@ -15,7 +15,7 @@ public class ResourceManager : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance = gameManager;
+        gameManager = GameManager.instance;
 
         gameManager.currentDay++;
     }
