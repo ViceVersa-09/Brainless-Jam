@@ -5,16 +5,17 @@ public class ResourceManager : MonoBehaviour
 {
     [SerializeField] GameObject gates;
 
-    int wood;
-    int stone;
-    int currentWood;
-    int currentStone;
+    [HideInInspector] public int currentWood;
+    [HideInInspector] public int currentStone;
+
+    [HideInInspector] public int wood;
+    [HideInInspector] public int stone;
 
     GameManager gameManager;
 
     private void Start()
     {
-        gameManager = FindFirstObjectByType<GameManager>();
+        GameManager.instance = gameManager;
 
         gameManager.currentDay++;
     }

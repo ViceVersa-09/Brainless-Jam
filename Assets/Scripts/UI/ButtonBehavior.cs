@@ -5,9 +5,7 @@ using UnityEngine.UI;
 public class ButtonBehavior : MonoBehaviour
 {
     #region Audio
-    [Header("Other References")]
-    [SerializeField] private GameObject optionsMenu;
-    [SerializeField] private GameObject startMenu;
+    [Header("Other")]
     [SerializeField] private int startScene = 0;
 
     [Header("Sliders")]
@@ -35,6 +33,10 @@ public class ButtonBehavior : MonoBehaviour
     }
     #endregion
     #region Button
+    [Header("Menu")]
+    [SerializeField] private GameObject optionsMenu;
+    [SerializeField] private GameObject startMenu;
+    
     public void MainMenu()
     {
         Time.timeScale = 1;
@@ -48,11 +50,6 @@ public class ButtonBehavior : MonoBehaviour
     {
         optionsMenu.SetActive(value);
         startMenu.SetActive(!value);
-    }
-    public void Retry()
-    {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadSceneAsync(currentSceneIndex);
     }
     #endregion
 }
