@@ -2,14 +2,16 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using static GameManager;
 
 public class Summary : MonoBehaviour
 {
     [Header("Moving")]
     [SerializeField] RectTransform[] rects;
-    [SerializeField] float startHeight;
+    [SerializeField] Vector2 startHeight;
     [SerializeField] float moveSpeed;
     [SerializeField] float slowDownTime;
+    [SerializeField] Vector2 awayPosition; 
 
     [Header("Bread")]
     [SerializeField] TextMeshProUGUI breadText;
@@ -35,30 +37,32 @@ public class Summary : MonoBehaviour
         gameManager = GameManager.instance;
         Array.Resize(ref ogPositions, rects.Length);
 
-        MovePopup();
+        StartMovement();
+        Bread();
+        Wood();
+        Stone();
+        resourceManager.EndOfDayMaterials();
     }
 
-    void MovePopup()
+    void StartMovement()
     {
         for (int i = 0; i < rects.Length; i++)
         {
             ogPositions[i] = rects[i].anchoredPosition;
-            Vector2 positionChanger = rects[i].anchoredPosition;
-            positionChanger.y += startHeight;
-            rects[i].anchoredPosition = positionChanger;
+            rects[i].anchoredPosition = startHeight;
 
             StartCoroutine(RectMovement(rects[i], ogPositions[i]));
         }
     }
 
-    IEnumerator RectMovement(RectTransform rect, Vector2 ogPosition)
+    IEnumerator RectMovement(RectTransform rect, Vector2 target)
     {
         for (int i = 0; i < 1; i++)
         {
             rect.anchoredPosition = Vector2.MoveTowards(rect.anchoredPosition,
-                Vector2.Lerp(rect.anchoredPosition, ogPosition, slowDownTime * Time.deltaTime), moveSpeed);
+                Vector2.Lerp(rect.anchoredPosition, target, slowDownTime * Time.deltaTime), moveSpeed);
 
-            if (rect.anchoredPosition != ogPosition)
+            if (rect.anchoredPosition != target)
             {
                 i--;
                 yield return new WaitForEndOfFrame();
@@ -66,10 +70,18 @@ public class Summary : MonoBehaviour
         }
     }
 
+    public void MoveAway()
+    {
+        foreach (var rect in rects)
+        { 
+            StartCoroutine(RectMovement(rect, awayPosition));
+        }
+    }
+
     void Bread()
     {
         breadText.text = gameManager.bread + " Bread Baked";
-        timeText.text = "+" + (gameManager.bread * 15) + " seconds";
+        timeText.text = "+" + gameManager.FloatToIntRoundedUp(Day.TimeUntilNight) + " seconds";
     }
 
     void Wood()

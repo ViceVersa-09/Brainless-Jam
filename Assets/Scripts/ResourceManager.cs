@@ -35,7 +35,7 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
-    void EndOfDayMaterials()
+    public void EndOfDayMaterials()
     {
         wood += currentWood;
         currentWood = 0;

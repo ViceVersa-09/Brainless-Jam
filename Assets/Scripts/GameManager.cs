@@ -31,12 +31,10 @@ public class GameManager : MonoBehaviour
     bool isDay = false;
 
     InputAction pauseMenu;
-    UIManager uIManager;
     ResourceManager resourceManager;
 
     private void Awake()
     {
-        uIManager = FindFirstObjectByType<UIManager>();
         resourceManager = FindFirstObjectByType<ResourceManager>();
 
         if (instance == null)
@@ -58,8 +56,11 @@ public class GameManager : MonoBehaviour
 
         bread = startBread;
         currentDay--;
-        uIManager.DayTextUI($"Day: {currentDay}");
-        uIManager.BreadUI("Time until night: " + Day.TimeUntilNight);
+        if (UIManager.instance != null)
+        {
+            UIManager.instance.DayTextUI($"Day: {currentDay}");
+            UIManager.instance.BreadUI("Time until night: " + Day.TimeUntilNight);
+        }
     }
 
     private void Update()
@@ -78,10 +79,10 @@ public class GameManager : MonoBehaviour
 
         if (pauseMenu.WasPressedThisFrame())
         {
-            bool isOpen = uIManager.pauseScreen.activeInHierarchy;
-            uIManager.PauseMenu(!isOpen);
+            bool isOpen = UIManager.instance.pauseScreen.activeInHierarchy;
+            UIManager.instance.PauseMenu(!isOpen);
 
-            uIManager.pauseScreen.SetActive(!isOpen);
+            UIManager.instance.pauseScreen.SetActive(!isOpen);
 
             Time.timeScale = !isOpen ? 0 : 1;
         }
@@ -94,7 +95,11 @@ public class GameManager : MonoBehaviour
         {
             timeSinceDayStarted += Time.deltaTime;
         }
-        uIManager.BreadUI("Time until night: " + FloatToIntRoundedUp(Day.TimeUntilNight));
+
+        if (UIManager.instance != null)
+        {
+            UIManager.instance.BreadUI("Time until night: " + FloatToIntRoundedUp(Day.TimeUntilNight));
+        }
     }
 
     IEnumerator Timer()
@@ -130,10 +135,10 @@ public class GameManager : MonoBehaviour
     void EndGame()
     {
         resourceManager.CountBread();
-        uIManager.SummeryObject();
+        UIManager.instance.SummeryObject();
     }
 
-    int FloatToIntRoundedUp(float input)
+    public int FloatToIntRoundedUp(float input)
     {
         if (Mathf.RoundToInt(input) - input == 0)
         {
