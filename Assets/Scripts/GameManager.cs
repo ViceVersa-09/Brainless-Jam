@@ -94,11 +94,12 @@ public class GameManager : MonoBehaviour
         {
             timeSinceDayStarted += Time.deltaTime;
         }
-        uIManager.BreadUI("Time until night: " + (int)Day.TimeUntilNight);
+        uIManager.BreadUI("Time until night: " + FloatToIntRoundedUp(Day.TimeUntilNight));
     }
 
     IEnumerator Timer()
     {
+        currentTick = 0;
         timeSinceDayStarted = 0;
         for (int i = 0; i < ticksPerDay; i++)
         {
@@ -130,6 +131,15 @@ public class GameManager : MonoBehaviour
     {
         resourceManager.CountBread();
         uIManager.SummeryObject();
+    }
+
+    int FloatToIntRoundedUp(float input)
+    {
+        if (Mathf.RoundToInt(input) - input == 0)
+        {
+            return (int)input;
+        }
+        return (int)input + 1;
     }
     #endregion
 }
