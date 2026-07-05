@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     public static class Day
     {
-        public static int CurrentDay { get { return instance.day; } set { instance.day = value; } }
+        public static int CurrentDay { get { return instance.currentDay; } set { instance.currentDay = value; } }
         public static int CurrentTick { get { return instance.currentTick; } set { instance.currentTick = value; } }
         public static float TimeUntilNight { get { return (instance.ticksPerDay - instance.currentTick) * instance.timePerTick - (instance.timeSinceDayStarted % instance.timePerTick); } }
         public static bool IsDay { get { return instance.isDay; } set { instance.isDay = value; } }
@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public int currentBread;
 
-    [HideInInspector] public int day;
     [HideInInspector] public int bread;
     [HideInInspector] public int stone;
 
@@ -133,7 +132,6 @@ public class GameManager : MonoBehaviour
     {
         resourceManager.CountBread();
         uIManager.SummeryObject();
-        currentDay++;
     }
     #endregion
 }
