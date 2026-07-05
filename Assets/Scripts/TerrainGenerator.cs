@@ -17,12 +17,13 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] GameObject stonePrefab;
 
     [Header("Other stuff")]
-    [SerializeField] float startDelay = 10.0f;
+    [SerializeField] private float startDelay = 10.0f;
+    [SerializeField] private float spawnCheckRadius = 0.5f;
 
-    int currentTreeSpawnCount;
-    int currentStoneSpawnCount;
+    private int currentTreeSpawnCount;
+    private int currentStoneSpawnCount;
 
-    void Start()
+    private void Start()
     {
         InvokeRepeating(nameof(SpawnTree), startDelay, treeDelay);
         InvokeRepeating(nameof(SpawnStone), startDelay, stoneDelay);
@@ -41,9 +42,11 @@ public class TerrainGenerator : MonoBehaviour
 
         Vector2 spawnPosition = new(Random.Range(miniTree.x, maxiTree.x), Random.Range(miniTree.y, maxiTree.y));
 
-        Instantiate(treePrefab, spawnPosition, Quaternion.identity);
-        currentTreeSpawnCount++;
-
+        if (Physics2D.OverlapCircle(spawnPosition, spawnCheckRadius) == null)
+        {
+            Instantiate(treePrefab, spawnPosition, Quaternion.identity);
+            currentTreeSpawnCount++;
+        }
     }
 
     private void SpawnStone()
@@ -56,7 +59,10 @@ public class TerrainGenerator : MonoBehaviour
 
         Vector2 spawnPosition = new(Random.Range(miniStone.x, maxiStone.x), Random.Range(miniStone.y, maxiStone.y));
 
-        Instantiate(stonePrefab, spawnPosition, Quaternion.identity);
-        currentStoneSpawnCount++;
+        if (Physics2D.OverlapCircle(spawnPosition, spawnCheckRadius) == null)
+        {
+            Instantiate(stonePrefab, spawnPosition, Quaternion.identity);
+            currentStoneSpawnCount++;
+        }
     }
 }
