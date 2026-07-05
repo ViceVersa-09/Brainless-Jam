@@ -15,24 +15,14 @@ public class CameraController : MonoBehaviour
     [SerializeField] Vector2 maxBounds;
 
     [Header("Testing")]
-    [SerializeField] bool testShake;
-    [SerializeField] float testShakeDuration;
-    [SerializeField] float testShakeMagnitude;
+    [SerializeField] public float testShakeDuration;
+    [SerializeField] public float testShakeMagnitude;
 
     float timeElapsed;
     bool shakeActive;
 
     Vector3 targetPosition;
     Vector3 velocity = Vector3.zero;
-
-    private void Update()
-    {
-        if (testShake)
-        {
-            testShake = false;
-            StartCoroutine(ShakeCameraRoutine(testShakeDuration, testShakeMagnitude));
-        }
-    }
 
     private void LateUpdate()
     {
