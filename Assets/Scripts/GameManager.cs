@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,11 +6,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public class Day
+    public static class Day
     {
         public static int CurrentDay { get { return instance.day; } set { instance.day = value; } }
         public static int CurrentTick { get { return instance.currentTick; } set { instance.currentTick = value; } }
         public static float TimeUntilNight { get { return (instance.ticksPerDay - instance.currentTick) * instance.timePerTick - (instance.timeSinceDayStarted % instance.timePerTick); } }
+        public static bool IsDay { get { return instance.isDay; } set { instance.isDay = value; } }
     }
 
     [Header("Values")]
@@ -29,16 +29,18 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int stone;
 
     int currentDay;
-    int dayTime;
     int currentTick = 0;
     float timeSinceDayStarted;
+    bool isDay = false;
 
     InputAction pauseMenu;
     UIManager uIManager;
+    ResourceManager resourceManager;
 
     private void Awake()
     {
         uIManager = FindFirstObjectByType<UIManager>();
+        resourceManager = FindFirstObjectByType<ResourceManager>();
 
         if (instance == null)
         {
@@ -59,13 +61,14 @@ public class GameManager : MonoBehaviour
 
         bread = startBread;
         currentDay--;
-        uIManager.DayTextUI($"Day: {Day.CurrentDay}");
+        uIManager.DayTextUI($"Day: {currentDay}");
         uIManager.BreadUI("Time until night: " + Day.TimeUntilNight);
     }
 
     private void Update()
     {
         Menu();
+        BreadUI();
     }
     #region Menu
     private void Menu()
@@ -87,26 +90,32 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
-    #region Something
+    #region DayNightCyckle
+    void BreadUI()
+    {
+        if (isDay)
+        {
+            timeSinceDayStarted += Time.deltaTime;
+        }
+        uIManager.BreadUI("Time until night: " + (int)Day.TimeUntilNight);
+    }
+
     IEnumerator Timer()
     {
-        dayTime = bread * 15;
-
-        for (int i = dayTime; i >= 0; i--)
+        timeSinceDayStarted = 0;
+        for (int i = 0; i < ticksPerDay; i++)
         {
-            uIManager.BreadUI("Time until night: " + i);
-            yield return new WaitForSeconds(1);
-
-            if (i == 0)
-            {
-                EndGame();
-                break;
-            }
+            yield return new WaitForSeconds(timePerTick);
+            currentTick++;
         }
+        isDay = false;
+        timeSinceDayStarted = 0;
+        EndGame();
     }
 
     public void StartGame()
     {
+        isDay = true;
         StartCoroutine(Timer());
 
         LittleGuy[] everyLittleGuy = FindObjectsByType<LittleGuy>(FindObjectsSortMode.None);
@@ -122,10 +131,9 @@ public class GameManager : MonoBehaviour
 
     void EndGame()
     {
-        ResourceManager resourceManager = FindFirstObjectByType<ResourceManager>();
-
         resourceManager.CountBread();
         uIManager.SummeryObject();
+        currentDay++;
     }
     #endregion
 }
