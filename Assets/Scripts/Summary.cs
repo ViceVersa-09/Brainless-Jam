@@ -15,7 +15,7 @@ public class Summary : MonoBehaviour
 
     [Header("Bread")]
     [SerializeField] TextMeshProUGUI breadText;
-    [SerializeField] TextMeshProUGUI timeText;
+    [SerializeField] TextMeshProUGUI leftoverText;
 
     [Header("Wood")]
     [SerializeField] TextMeshProUGUI missionWoodText;
@@ -34,7 +34,7 @@ public class Summary : MonoBehaviour
     private void Start()
     {
         resourceManager = FindFirstObjectByType<ResourceManager>();
-        gameManager = GameManager.instance;
+        gameManager = instance;
         Array.Resize(ref ogPositions, rects.Length);
 
         StartMovement();
@@ -72,16 +72,17 @@ public class Summary : MonoBehaviour
 
     public void MoveAway()
     {
+        StopAllCoroutines();
         foreach (var rect in rects)
         { 
-            StartCoroutine(RectMovement(rect, awayPosition));
+            StartCoroutine(RectMovement(rect, new Vector2(awayPosition.x, rect.anchoredPosition.y)));
         }
     }
 
     void Bread()
     {
         breadText.text = gameManager.bread + " Bread Baked";
-        timeText.text = "+" + gameManager.FloatToIntRoundedUp(Day.TimeUntilNight) + " seconds";
+        leftoverText.text = "+" + gameManager.bread + " leftover";
     }
 
     void Wood()
