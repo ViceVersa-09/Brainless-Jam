@@ -80,7 +80,7 @@ public class Summary : MonoBehaviour
 
     void Bread()
     {
-        breadText.text = gameManager.bread + " Bread Baked";
+        breadText.text = resourceManager.bread + " Bread Baked";
         timeText.text = "+" + gameManager.FloatToIntRoundedUp(Day.TimeUntilNight) + " seconds";
     }
 

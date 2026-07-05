@@ -22,9 +22,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] float timePerTick = 10;
     [SerializeField] int ticksPerDay = 24;
 
-    [HideInInspector] public int bread;
-    [HideInInspector] public int stone;
-
     int currentDay;
     int currentTick = 0;
     float timeSinceDayStarted;
@@ -54,8 +51,8 @@ public class GameManager : MonoBehaviour
     {
         pauseMenu = InputSystem.actions.FindAction("Pause");
 
-        bread = startBread;
-        currentDay--;
+        resourceManager.bread = startBread;
+
         if (UIManager.instance != null)
         {
             UIManager.instance.DayTextUI($"Day: {currentDay}");
@@ -102,7 +99,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    IEnumerator Timer()
+    IEnumerator DayTimer()
     {
         currentTick = 0;
         timeSinceDayStarted = 0;
@@ -119,7 +116,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         isDay = true;
-        StartCoroutine(Timer());
+        StartCoroutine(DayTimer());
 
         LittleGuy[] everyLittleGuy = FindObjectsByType<LittleGuy>(FindObjectsSortMode.None);
 
@@ -134,6 +131,7 @@ public class GameManager : MonoBehaviour
 
     void EndGame()
     {
+        currentDay++;
         resourceManager.CountBread();
         UIManager.instance.SummeryObject();
     }

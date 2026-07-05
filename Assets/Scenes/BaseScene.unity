@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &117812135 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2871310602929875322, guid: 73678d5a0b61ccf4d947ac8ddd2837cb, type: 3}
-  m_PrefabInstance: {fileID: 2793051026295400244}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &207657083
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,16 +273,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7228d5b3a90bbe2468d385a4b4b281d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  pauseScreen: {fileID: 117812135}
-  dayCountText: {fileID: 2127756129}
-  breadCountText: {fileID: 1388266294}
-  summaryPrefab: {fileID: 8274576777091234891, guid: 6e5f4e391e287cd42951bd88be5df6e3, type: 3}
   startBread: 9
-  currentDay: 0
-  currentBread: 0
-  day: 0
-  bread: 0
-  stone: 0
+  timePerTick: 10
+  ticksPerDay: 24
 --- !u!4 &498305901
 Transform:
   m_ObjectHideFlags: 0
@@ -460,7 +448,6 @@ MonoBehaviour:
   trackY: 1
   minBounds: {x: -500, y: -500}
   maxBounds: {x: 500, y: 500}
-  testShake: 0
   testShakeDuration: 1
   testShakeMagnitude: 0.1
 --- !u!1 &619394800
@@ -3842,17 +3829,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1388266294 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4185384652381438944, guid: 73678d5a0b61ccf4d947ac8ddd2837cb, type: 3}
-  m_PrefabInstance: {fileID: 2793051026295400244}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1440597068
 GameObject:
   m_ObjectHideFlags: 0
@@ -14640,6 +14616,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1678933197}
   - component: {fileID: 1678933198}
+  - component: {fileID: 1678933199}
   - component: {fileID: 1678933196}
   m_Layer: 0
   m_Name: FarmBarn
@@ -14737,19 +14714,24 @@ MonoBehaviour:
   gates: {fileID: 858009378}
   currentWood: 0
   currentStone: 0
+  currentBread: 0
   wood: 0
   stone: 0
---- !u!114 &2127756129 stripped
+  bread: 0
+--- !u!114 &1678933199
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7862305275506070082, guid: 73678d5a0b61ccf4d947ac8ddd2837cb, type: 3}
-  m_PrefabInstance: {fileID: 2793051026295400244}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1678933195}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 04cf963072911df49a8aa011171f5d03, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_EditorClassIdentifier: Assembly-CSharp::FarmBuilding
+  breadProductionSpeed: 5
+  breadQuantity: 1
 --- !u!1001 &742994339117123750
 PrefabInstance:
   m_ObjectHideFlags: 0
