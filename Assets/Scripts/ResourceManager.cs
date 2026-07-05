@@ -17,7 +17,7 @@ public class ResourceManager : MonoBehaviour
     {
         gameManager = GameManager.instance;
 
-        gameManager.currentDay++;
+        GameManager.Day.CurrentDay++;
     }
 
     public void CountBread()
