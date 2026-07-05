@@ -22,8 +22,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] float timePerTick = 10;
     [SerializeField] int ticksPerDay = 24;
 
-    [HideInInspector] public int currentBread;
-
     [HideInInspector] public int bread;
     [HideInInspector] public int stone;
 
