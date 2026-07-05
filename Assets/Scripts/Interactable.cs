@@ -32,32 +32,46 @@ public class Interactable : MonoBehaviour
     SpriteRenderer spriteRenderer;
     InputAction mineAction;
     InputAction recruitAction;
+    InputAction unRecruitAction;
+    PlayerController playerController;
 
     #region Unity Methods
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerController = FindFirstObjectByType<PlayerController>();
         mineAction = InputSystem.actions.FindAction("Mine");
         recruitAction = InputSystem.actions.FindAction("Interact");
+        unRecruitAction = InputSystem.actions.FindAction("UnRecruit");
     }
 
     private void Update()
     {
         CheckMineInput();
         CheckRecruitInput();
+
+        if (playerController.interactingWith == this && canInteract)
+        {
+            canInteract = true;
+            spriteRenderer.sprite = outlinedSprite;
+        }
+        else
+        {
+            canInteract = false;
+            spriteRenderer.sprite = defaultSprite;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        playerController.interactingWith = this;
         canInteract = true;
-        spriteRenderer.sprite = outlinedSprite;
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         canInteract = false;
-        spriteRenderer.sprite = defaultSprite;
     }
 
     #endregion
@@ -76,6 +90,7 @@ public class Interactable : MonoBehaviour
     IEnumerator Mine()
     {
         LittleGuy[] littleGuys = FindObjectsByType<LittleGuy>(FindObjectsSortMode.None);
+        playerController.canControl = false;
 
         foreach (var littleGuy in littleGuys)
         {
@@ -122,9 +137,21 @@ public class Interactable : MonoBehaviour
         if (recruitAction.triggered && canInteract && what == What.LittleGuy)
         {
             LittleGuy littleGuy = GetComponent<LittleGuy>();
-            PlayerController playerController = FindFirstObjectByType<PlayerController>();
 
+            enabled = false;
             littleGuy.currentState = LittleGuy.State.FollowingPlayer;
+            playerController.maxHealth += health;
+        }
+    }
+
+    public void UnRecruit()
+    {
+        if (unRecruitAction.triggered && what == What.LittleGuy)
+        {
+            LittleGuy littleGuy = GetComponent<LittleGuy>();
+
+            enabled = true;
+            littleGuy.currentState = LittleGuy.State.FarmingHome;
             playerController.maxHealth += health;
         }
     }

@@ -8,7 +8,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float maxHealth;
 
     float health;
+    public bool canControl = true;
 
+    [HideInInspector] public Interactable interactingWith;
     InputAction moveAction;
     Vector2 moveVector;
     Rigidbody2D rb;
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer(Vector2 moveVector)
     {
-        if (moveAction.IsPressed())
+        if (moveAction.IsPressed() && canControl)
         {
             rb.linearVelocity = moveVector * moveSpeed;
         }

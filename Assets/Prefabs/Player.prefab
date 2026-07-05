@@ -48,6 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 6
+  maxHealth: 0
+  canControl: 1
+  interactingWith: {fileID: 0}
 --- !u!212 &2019358353890408063
 SpriteRenderer:
   serializedVersion: 2
