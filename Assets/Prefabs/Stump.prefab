@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6291113592168265886}
   - component: {fileID: 1751435364067343733}
   - component: {fileID: 77777323963026532}
+  - component: {fileID: 5331409341413041240}
   m_Layer: 7
   m_Name: Stump
   m_TagString: Interactable
@@ -105,8 +106,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224eb386dd8f7914bbfdc6aec04fe987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  what: 0
+  health: 10
+  damagePerGuy: 0.3
+  itemDrop: {fileID: 0}
+  shakeMagnitude: 0.1
+  shakeDuration: 0.2
   defaultSprite: {fileID: 2048009326408146020, guid: fb5bec3bd2ef4d94fa1b086552c15fdb, type: 3}
   outlinedSprite: {fileID: 2890668859807350312, guid: fb5bec3bd2ef4d94fa1b086552c15fdb, type: 3}
+  canInteract: 0
 --- !u!61 &77777323963026532
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -153,3 +161,39 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.1, y: 1.2}
   m_EdgeRadius: 0
+--- !u!58 &5331409341413041240
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3087412326369962372}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 1}
+  m_Radius: 2
