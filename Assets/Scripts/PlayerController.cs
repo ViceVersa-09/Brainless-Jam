@@ -5,6 +5,9 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField] float moveSpeed;
+    [SerializeField] public float maxHealth;
+
+    float health;
 
     InputAction moveAction;
     Vector2 moveVector;
