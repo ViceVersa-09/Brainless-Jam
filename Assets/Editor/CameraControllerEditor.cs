@@ -9,7 +9,7 @@ public class CameraControllerEditor : Editor
         CameraController cameraController = (CameraController)target;
         base.OnInspectorGUI();
 
-        if (GUILayout.Button("TestCameraShake"))
+        if (GUILayout.Button("Test Camera Shake"))
         {
             cameraController.PlayCameraShakeRoutine(cameraController.testShakeDuration, cameraController.testShakeMagnitude);
         }

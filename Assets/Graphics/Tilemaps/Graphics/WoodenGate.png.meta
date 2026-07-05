@@ -200,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 793b2f8b2e55c5f44981265c7a686004
-      internalID: -1163019126
+      spriteID: 7cd64bf911459374db106c3747462dae
+      internalID: -1954369977
       vertices: []
       indices: 
       edges: []
@@ -210,7 +210,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d5e62f4234159064e8db386368616bc8
+    spriteID: f31c6164d2680864980725ed055cad6f
     internalID: 0
     vertices: []
     indices: 
@@ -225,7 +225,7 @@ TextureImporter:
       WoodenGate_0: 5641982084617203794
       WoodenGate_1: 5416457518351616685
       WoodenGate_2: 8042742702787769694
-      WoodenGate_3: -1163019126
+      WoodenGate_3: -1954369977
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
