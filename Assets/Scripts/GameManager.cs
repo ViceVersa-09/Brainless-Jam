@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     public static class Day
     {
-        public static int CurrentDay { get { return instance.day; } set { instance.day = value; } }
+        public static int CurrentDay { get { return instance.currentDay; } set { instance.currentDay = value; } }
         public static int CurrentTick { get { return instance.currentTick; } set { instance.currentTick = value; } }
         public static float TimeUntilNight { get { return (instance.ticksPerDay - instance.currentTick) * instance.timePerTick - (instance.timeSinceDayStarted % instance.timePerTick); } }
         public static bool IsDay { get { return instance.isDay; } set { instance.isDay = value; } }
@@ -22,9 +22,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] float timePerTick = 10;
     [SerializeField] int ticksPerDay = 24;
 
-    [HideInInspector] public int currentBread;
-
-    [HideInInspector] public int day;
     [HideInInspector] public int bread;
     [HideInInspector] public int stone;
 
@@ -97,11 +94,12 @@ public class GameManager : MonoBehaviour
         {
             timeSinceDayStarted += Time.deltaTime;
         }
-        uIManager.BreadUI("Time until night: " + (int)Day.TimeUntilNight);
+        uIManager.BreadUI("Time until night: " + FloatToIntRoundedUp(Day.TimeUntilNight));
     }
 
     IEnumerator Timer()
     {
+        currentTick = 0;
         timeSinceDayStarted = 0;
         for (int i = 0; i < ticksPerDay; i++)
         {
@@ -133,7 +131,15 @@ public class GameManager : MonoBehaviour
     {
         resourceManager.CountBread();
         uIManager.SummeryObject();
-        currentDay++;
+    }
+
+    int FloatToIntRoundedUp(float input)
+    {
+        if (Mathf.RoundToInt(input) - input == 0)
+        {
+            return (int)input;
+        }
+        return (int)input + 1;
     }
     #endregion
 }
