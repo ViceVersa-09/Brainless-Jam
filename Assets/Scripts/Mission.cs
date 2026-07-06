@@ -1,5 +1,7 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Mission : MonoBehaviour
 {
@@ -7,18 +9,29 @@ public class Mission : MonoBehaviour
     [SerializeField] Vector2 woodRange;
     [SerializeField] Vector2 stoneRange;
 
-    [Header("Text")]
+    [Header("UI")]
     [SerializeField] TextMeshProUGUI woodText;
     [SerializeField] TextMeshProUGUI stoneText;
+    [SerializeField] GameObject openButton;
+    [SerializeField] GameObject closeButton;
+
+    [Header("Moving")]
+    [SerializeField] Vector2 openPosition;
+    [SerializeField] Vector2 closedPosition;
+    [SerializeField] float moveSpeed;
+    [SerializeField] float slowDownTime;
 
     int woodMission;
     int stoneMission;
+    bool open = true;
 
     ResourceManager resourceManager;
+    RectTransform rect;
 
     private void Start()
     {
         resourceManager = FindFirstObjectByType<ResourceManager>();
+        rect = GetComponent<RectTransform>();
     }
 
     public void NewMission()
@@ -27,14 +40,53 @@ public class Mission : MonoBehaviour
         stoneMission = Random.Range((int)stoneRange.x, (int)stoneRange.y);
     }
 
-    void MissionText()
+    public void UpdateMissionText()
     {
         woodText.text = resourceManager.wood + "/" + woodMission;
         stoneText.text = resourceManager.stone + "/" + stoneMission;
     }
 
-    void MissionButton()
+    public void MissionButton()
     {
+        StopAllCoroutines();
+        StartCoroutine(MissionRoutine());
+    }
 
+    IEnumerator MissionRoutine()
+    {       
+        if (!open)
+        {
+            open = true;
+            openButton.SetActive(false);
+            closeButton.SetActive(true);
+            for (int i = 0; i < 1; i++)
+            {
+                rect.anchoredPosition = Vector2.MoveTowards(rect.anchoredPosition,
+                    Vector2.Lerp(rect.anchoredPosition, openPosition, slowDownTime * Time.deltaTime), moveSpeed);
+
+                if (rect.anchoredPosition != openPosition)
+                {
+                    i--;
+                    yield return new WaitForEndOfFrame();
+                }
+            }
+        }
+        else if (open)
+        {
+            open = false;
+            openButton.SetActive(true);
+            closeButton.SetActive(false);
+            for (int i = 0; i < 1; i++)
+            {
+                rect.anchoredPosition = Vector2.MoveTowards(rect.anchoredPosition,
+                    Vector2.Lerp(rect.anchoredPosition, closedPosition, slowDownTime * Time.deltaTime), moveSpeed);
+
+                if (rect.anchoredPosition != closedPosition)
+                {
+                    i--;
+                    yield return new WaitForEndOfFrame();
+                }
+            }
+        }
     }
 }

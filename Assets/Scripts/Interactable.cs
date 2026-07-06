@@ -125,6 +125,7 @@ public class Interactable : MonoBehaviour
 
     void Break()
     {
+        playerController.canControl = true;
         if (itemDrop != null)
         {
             Instantiate(itemDrop);
