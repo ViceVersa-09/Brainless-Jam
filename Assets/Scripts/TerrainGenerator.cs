@@ -2,67 +2,81 @@ using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour
 {
-    [Header("Tree Settings")]
-    [SerializeField] private int treeSpawnLimit = 20;
+    [Header("Delay Settings")]
     [SerializeField] private float treeDelay = 0.1f;
-    [SerializeField] private Vector2 miniTree = new(0f, 0f);
-    [SerializeField] private Vector2 maxiTree = new(0f, 0f);
-    [SerializeField] GameObject treePrefab;
-
-    [Header("Stone Settings")]
-    [SerializeField] private int stoneSpawnLimit = 20;
+    [SerializeField] private float treeGroupDelay = 0.1f;
     [SerializeField] private float stoneDelay = 0.1f;
-    [SerializeField] private Vector2 miniStone = new(0f, 0f);
-    [SerializeField] private Vector2 maxiStone = new(0f, 0f);
-    [SerializeField] GameObject stonePrefab;
+    [SerializeField] private float stoneGroupDelay = 0.1f;
+
+    [Header("Limit Settings")]
+    [SerializeField] private int treeSpawnLimit = 20;
+    [SerializeField] private int treeGroupSpawnLimit = 20;
+    [SerializeField] private int stoneSpawnLimit = 20;
+    [SerializeField] private int stoneGroupSpawnLimit = 20;
 
     [Header("Other stuff")]
     [SerializeField] private float startDelay = 0.1f;
     [SerializeField] private float spawnCheckRadius = 0.25f;
+    [SerializeField] private Vector2 mini = new(0f, 0f);
+    [SerializeField] private Vector2 maxi = new(0f, 0f);
+
+    [SerializeField] GameObject treePrefab;
+    [SerializeField] GameObject treeGroupPrefab;
+    [SerializeField] GameObject stonePrefab;
+    [SerializeField] GameObject stoneGroupPrefab;
 
     private int currentTreeSpawnCount;
+    private int currentTreeGroupSpawnCount;
     private int currentStoneSpawnCount;
+    private int currentStoneGroupSpawnCount;
 
     private void Start()
     {
         InvokeRepeating(nameof(SpawnTree), startDelay, treeDelay);
+        InvokeRepeating(nameof(SpawnTreeGroup), startDelay, treeGroupDelay);
         InvokeRepeating(nameof(SpawnStone), startDelay, stoneDelay);
+        InvokeRepeating(nameof(SpawnStoneGroup), startDelay, stoneGroupDelay);
 
         currentTreeSpawnCount = 0;
+        currentTreeGroupSpawnCount = 0;
         currentStoneSpawnCount = 0;
+        currentStoneGroupSpawnCount = 0;
+    }
+
+    void Spawn(ref int spawnCount, int spawnLimit, GameObject prefab, string invokeName)
+    {
+        if (spawnCount >= spawnLimit)
+        {
+            CancelInvoke(invokeName);
+            return;
+        }
+
+        Vector2 spawnPosition = new(Random.Range(mini.x, maxi.x), Random.Range(mini.y, maxi.y));
+
+        if (Physics2D.OverlapCircle(spawnPosition, spawnCheckRadius) == null)
+        {
+            Instantiate(prefab, spawnPosition, Quaternion.identity);
+            spawnCount++;
+        }
     }
 
     private void SpawnTree()
     {
-        if (currentTreeSpawnCount >= treeSpawnLimit)
-        {
-            CancelInvoke(nameof(SpawnTree));
-            return;
-        }
-
-        Vector2 spawnPosition = new(Random.Range(miniTree.x, maxiTree.x), Random.Range(miniTree.y, maxiTree.y));
-
-        if (Physics2D.OverlapCircle(spawnPosition, spawnCheckRadius) == null)
-        {
-            Instantiate(treePrefab, spawnPosition, Quaternion.identity);
-            currentTreeSpawnCount++;
-        }
+        Spawn(ref currentTreeSpawnCount, treeSpawnLimit, treePrefab, nameof(SpawnTree));
     }
 
     private void SpawnStone()
     {
-        if (currentStoneSpawnCount >= stoneSpawnLimit)
-        {
-            CancelInvoke(nameof(SpawnStone));
-            return;
-        }
+        Spawn(ref currentStoneSpawnCount, stoneSpawnLimit, stonePrefab, nameof(SpawnStone));
+    }
 
-        Vector2 spawnPosition = new(Random.Range(miniStone.x, maxiStone.x), Random.Range(miniStone.y, maxiStone.y));
+    private void SpawnTreeGroup()
+    {
+        Spawn(ref currentTreeGroupSpawnCount, treeGroupSpawnLimit, treeGroupPrefab, nameof(SpawnTreeGroup));
+    }
 
-        if (Physics2D.OverlapCircle(spawnPosition, spawnCheckRadius) == null)
-        {
-            Instantiate(stonePrefab, spawnPosition, Quaternion.identity);
-            currentStoneSpawnCount++;
-        }
+    private void SpawnStoneGroup()
+    {
+        Spawn(ref currentStoneGroupSpawnCount, stoneGroupSpawnLimit, stoneGroupPrefab, nameof(SpawnStoneGroup));
     }
 }
