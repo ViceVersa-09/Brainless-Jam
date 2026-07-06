@@ -50,9 +50,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WolfController
   moveSpeed: 0.5
   stopDistance: 2
+  huntDistance: 10
   damage: 3
   attackSpeed: 3
-  attackDashLength: 1
 --- !u!114 &589128314906962809
 MonoBehaviour:
   m_ObjectHideFlags: 0
