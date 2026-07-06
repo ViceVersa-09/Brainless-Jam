@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class ResourceManager : MonoBehaviour
 {
@@ -25,6 +24,7 @@ public class ResourceManager : MonoBehaviour
         LittleGuy[] everyLittleGuy = FindObjectsByType<LittleGuy>(FindObjectsSortMode.None);
 
         gameManager.bread = 0;
+        gameManager.bread += gameManager.leftoverBread;
 
         foreach (var littleGuy in everyLittleGuy)
         {
@@ -37,6 +37,8 @@ public class ResourceManager : MonoBehaviour
 
     public void EndOfDayMaterials()
     {
+        gameManager.leftoverBread = gameManager.bread;
+
         wood += currentWood;
         currentWood = 0;
 

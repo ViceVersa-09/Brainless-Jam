@@ -82,7 +82,7 @@ public class Summary : MonoBehaviour
     void Bread()
     {
         breadText.text = gameManager.bread + " Bread Baked";
-        leftoverText.text = "+" + gameManager.bread + " leftover";
+        leftoverText.text = "+" + gameManager.leftoverBread + " leftover";
     }
 
     void Wood()

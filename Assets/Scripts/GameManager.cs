@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int ticksPerDay = 24;
 
     [HideInInspector] public int bread;
-    [HideInInspector] public int stone;
+    [HideInInspector] public int leftoverBread;
 
     int currentDay;
     int currentTick = 0;
