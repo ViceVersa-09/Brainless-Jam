@@ -65,8 +65,13 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        playerController.interactingWith = this;
-        canInteract = true;
+        int playerLayer = LayerMask.NameToLayer("Player");
+
+        if (other.gameObject.layer == playerLayer)
+        {
+            playerController.interactingWith = this;
+            canInteract = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -153,7 +158,7 @@ public class Interactable : MonoBehaviour
 
             enabled = true;
             littleGuy.currentState = LittleGuy.State.FarmingHome;
-            playerController.maxHealth += health;
+            playerController.maxHealth -= health;
         }
     }
 }

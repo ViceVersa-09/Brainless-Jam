@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] public float maxHealth;
 
-    float health;
+    [HideInInspector] public float health;
     public bool canControl = true;
 
     [HideInInspector] public Interactable interactingWith;
