@@ -83,7 +83,7 @@ public class Interactable : MonoBehaviour
 
     void CheckMineInput()
     {
-        if (mineAction.triggered && canInteract)
+        if (mineAction.triggered && canInteract && playerController.interactingWith == this)
         {
             if (what == What.Wood || what == What.Stone || what == What.Wolf)
             {

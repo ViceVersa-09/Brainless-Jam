@@ -16,10 +16,12 @@ public class WolfController : MonoBehaviour
     Rigidbody2D rb;
     PlayerController playerController;
     Coroutine attackRoutine;
+    Interactable interactable;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        interactable = GetComponent<Interactable>();
         playerController = FindFirstObjectByType<PlayerController>();
     }
 
@@ -30,7 +32,7 @@ public class WolfController : MonoBehaviour
             Hunt();
         }       
 
-        if (Vector2.Distance(transform.position, playerController.transform.position) <= stopDistance && attackRoutine == null)
+        if (Vector2.Distance(transform.position, playerController.transform.position) <= stopDistance && attackRoutine == null && playerController.interactingWith == interactable)
         {
             attackRoutine = StartCoroutine(Attack());
         }
@@ -50,6 +52,7 @@ public class WolfController : MonoBehaviour
 
     IEnumerator Attack()
     {
+        // It should like dash towards you
         playerController.health -= damage;
 
         yield return new WaitForSeconds(attackSpeed);
