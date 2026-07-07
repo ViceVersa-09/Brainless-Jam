@@ -85,8 +85,13 @@ public class Interactable : MonoBehaviour
     {
         if (mineAction.triggered && canInteract && playerController.interactingWith == this)
         {
-            if (what == What.Wood || what == What.Stone || what == What.Wolf)
+            if (what == What.Wood || what == What.Stone)
             {
+                StartCoroutine(Mine());
+            }
+            else if (what == What.Wolf)
+            {
+                // The wolf needs its own thing
                 StartCoroutine(Mine());
             }
         }

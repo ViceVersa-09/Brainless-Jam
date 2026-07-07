@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] public float maxHealth;
 
-    [HideInInspector] public float health;
+    [Header("Not Serialized")]
+    public float currentHealth;
     public bool canControl = true;
 
     [HideInInspector] public Interactable interactingWith;
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour
     {
         moveAction = InputSystem.actions.FindAction("Move");
         rb = GetComponent<Rigidbody2D>();
+
+        currentHealth = maxHealth;
     }
 
     private void Update()

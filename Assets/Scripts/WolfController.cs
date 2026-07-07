@@ -12,6 +12,10 @@ public class WolfController : MonoBehaviour
     [Header("Attacking")]
     [SerializeField] float damage;
     [SerializeField] float attackSpeed;
+    [SerializeField] float dashSpeed;
+    [SerializeField] float dashDistance;
+
+    bool hunting;
 
     Rigidbody2D rb;
     PlayerController playerController;
@@ -27,14 +31,33 @@ public class WolfController : MonoBehaviour
 
     private void Update()
     {
-        if (Vector2.Distance(transform.position, playerController.transform.position) <= huntDistance)
+        if (Vector2.Distance(transform.position, playerController.transform.position) <= huntDistance && playerController.canControl)
         {
+            hunting = true;
             Hunt();
-        }       
-
-        if (Vector2.Distance(transform.position, playerController.transform.position) <= stopDistance && attackRoutine == null && playerController.interactingWith == interactable)
+        }
+        else
         {
-            attackRoutine = StartCoroutine(Attack());
+            hunting = false;
+        }
+
+        if (Vector2.Distance(transform.position, playerController.transform.position) <= stopDistance && attackRoutine == null)
+        {
+            if (playerController.interactingWith == interactable || playerController.canControl)
+            {
+                attackRoutine = StartCoroutine(Attack());
+            }
+        }
+        else
+        {
+            if (Vector2.Distance(transform.position, playerController.transform.position) < stopDistance)
+            {
+                rb.linearVelocity = moveSpeed * -(playerController.transform.position - transform.position);
+            }
+            else if (attackRoutine == null && !hunting)
+            {
+                rb.linearVelocity = Vector2.zero;
+            }
         }
     }
 
@@ -44,7 +67,7 @@ public class WolfController : MonoBehaviour
         {
             rb.linearVelocity = moveSpeed * (playerController.transform.position - transform.position);
         }
-        else
+        else if (Vector2.Distance(transform.position, playerController.transform.position) == stopDistance && attackRoutine == null)
         {
             rb.linearVelocity = Vector2.zero;
         }
@@ -52,8 +75,21 @@ public class WolfController : MonoBehaviour
 
     IEnumerator Attack()
     {
-        // It should like dash towards you
-        playerController.health -= damage;
+        Vector3 originalPos = transform.position;
+
+        while (Vector2.Distance(transform.position, playerController.transform.position) > dashDistance)
+        {
+            rb.linearVelocity = dashSpeed * (playerController.transform.position - transform.position);
+            yield return new WaitForEndOfFrame();
+        }      
+
+        playerController.currentHealth -= damage;
+
+        while (originalPos - transform.position != Vector3.zero)
+        {
+            rb.linearVelocity = dashSpeed * (originalPos - transform.position);
+            yield return new WaitForEndOfFrame();
+        }
 
         yield return new WaitForSeconds(attackSpeed);
 
