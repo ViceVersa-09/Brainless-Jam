@@ -55,6 +55,9 @@ MonoBehaviour:
   attackSpeed: 3
   dashSpeed: 10
   dashDistance: 1
+  returnDistance: 1
+  playerAttackSpeed: 1.5
+  playerDamage: 4
 --- !u!114 &589128314906962809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,7 +173,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 2
+  m_Radius: 3
 --- !u!50 &-2059228977211394693
 Rigidbody2D:
   serializedVersion: 5

@@ -15,6 +15,10 @@ public class WolfController : MonoBehaviour
     [SerializeField] float dashSpeed;
     [SerializeField] float dashDistance;
 
+    [Header("Players attack stats")]
+    [SerializeField] public float playerAttackSpeed;
+    [SerializeField] public float playerDamage;
+
     bool hunting;
 
     Rigidbody2D rb;

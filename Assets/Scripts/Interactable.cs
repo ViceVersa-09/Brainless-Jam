@@ -28,6 +28,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] public Sprite outlinedSprite;
 
     public bool canInteract;
+    bool canAttack = true;
 
     SpriteRenderer spriteRenderer;
     InputAction mineAction;
@@ -53,7 +54,6 @@ public class Interactable : MonoBehaviour
 
         if (playerController.interactingWith == this && canInteract)
         {
-            canInteract = true;
             spriteRenderer.sprite = outlinedSprite;
         }
         else
@@ -71,6 +71,7 @@ public class Interactable : MonoBehaviour
         {
             playerController.interactingWith = this;
             canInteract = true;
+            canAttack = true;
         }
     }
 
@@ -84,15 +85,15 @@ public class Interactable : MonoBehaviour
     void CheckMineInput()
     {
         if (mineAction.triggered && canInteract && playerController.interactingWith == this)
-        {
+        {        
             if (what == What.Wood || what == What.Stone)
             {
                 StartCoroutine(Mine());
             }
-            else if (what == What.Wolf)
+            else if (what == What.Wolf && canAttack)
             {
-                // The wolf needs its own thing
-                StartCoroutine(Mine());
+                StopAllCoroutines();
+                StartCoroutine(PlayerAttack());
             }
         }
     }
@@ -133,8 +134,48 @@ public class Interactable : MonoBehaviour
         Break();
     }
 
+    IEnumerator PlayerAttack()
+    {
+        WolfController wolfController = GetComponent<WolfController>();
+        LittleGuy[] littleGuys = FindObjectsByType<LittleGuy>(FindObjectsSortMode.None);
+        canAttack = false;
+        float allGuysDamage = 0f;
+
+        foreach (var littleGuy in littleGuys)
+        {
+            if (littleGuy.currentState == LittleGuy.State.FollowingPlayer)
+            {
+                allGuysDamage += damagePerGuy;
+            }
+        }
+
+        health -= allGuysDamage + wolfController.playerDamage;
+        Vector2 originalPos = transform.localPosition;
+        float elapsed = 0f;
+
+        while (elapsed < shakeDuration)
+        {
+            float offsetX = UnityEngine.Random.Range(-1, 1) * shakeMagnitude;
+            float offsetY = UnityEngine.Random.Range(-1, 1) * shakeMagnitude;
+            transform.localPosition = originalPos + new Vector2(offsetX, offsetY);
+            yield return new WaitForEndOfFrame();
+            elapsed += Time.deltaTime;
+        }
+
+        transform.localPosition = originalPos;
+
+        if (health <= 0)
+        {
+            Break();
+        }
+
+        yield return new WaitForSeconds(wolfController.playerAttackSpeed);
+        canAttack = true;
+    }
+
     void Break()
     {
+        canAttack = true;
         playerController.canControl = true;
         if (itemDrop != null)
         {
