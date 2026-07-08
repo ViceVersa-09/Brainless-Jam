@@ -15,11 +15,13 @@ public class PlayerController : MonoBehaviour
     InputAction moveAction;
     Vector2 moveVector;
     Rigidbody2D rb;
+    Tutorial tutorial;
 
     private void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
         rb = GetComponent<Rigidbody2D>();
+        tutorial = FindFirstObjectByType<Tutorial>();
 
         currentHealth = maxHealth;
     }
@@ -28,10 +30,18 @@ public class PlayerController : MonoBehaviour
     {
         // I'm doing it this way so that it'll be easier to make things like cutscenes
         moveVector = moveAction.ReadValue<Vector2>();
-        MovePlayer(moveVector);
+
+        if (tutorial != null && !tutorial.cutscene)
+        {
+            MovePlayer(moveVector);
+        }
+        else if (tutorial == null)
+        {
+            MovePlayer(moveVector);
+        }
     }
 
-    void MovePlayer(Vector2 moveVector)
+    public void MovePlayer(Vector2 moveVector)
     {
         if (moveAction.IsPressed() && canControl)
         {
