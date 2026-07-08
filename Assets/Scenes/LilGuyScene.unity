@@ -119,6 +119,67 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &479582403
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 696250515929767166, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: littleGuyManager
+      value: 
+      objectReference: {fileID: 1935021779}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938843968360947884, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_Name
+      value: Little guy (11)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,6 +401,250 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &873078228
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 696250515929767166, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: littleGuyManager
+      value: 
+      objectReference: {fileID: 1935021779}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938843968360947884, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_Name
+      value: Little guy (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+--- !u!1001 &958886577
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 696250515929767166, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: littleGuyManager
+      value: 
+      objectReference: {fileID: 1935021779}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938843968360947884, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_Name
+      value: Little guy (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+--- !u!1001 &1161267843
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 696250515929767166, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: littleGuyManager
+      value: 
+      objectReference: {fileID: 1935021779}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938843968360947884, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_Name
+      value: Little guy (14)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+--- !u!1001 &1236373266
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 696250515929767166, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: littleGuyManager
+      value: 
+      objectReference: {fileID: 1935021779}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938843968360947884, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_Name
+      value: Little guy (7)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
 --- !u!1001 &1261080953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -348,6 +653,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 696250515929767166, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: littleGuyManager
+      value: 
+      objectReference: {fileID: 1935021779}
     - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.48
@@ -397,6 +706,250 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+--- !u!1001 &1292551673
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 696250515929767166, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: littleGuyManager
+      value: 
+      objectReference: {fileID: 1935021779}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938843968360947884, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_Name
+      value: Little guy (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+--- !u!1001 &1337627667
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 696250515929767166, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: littleGuyManager
+      value: 
+      objectReference: {fileID: 1935021779}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938843968360947884, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_Name
+      value: Little guy (9)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+--- !u!1001 &1360951945
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 696250515929767166, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: littleGuyManager
+      value: 
+      objectReference: {fileID: 1935021779}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938843968360947884, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_Name
+      value: Little guy (13)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+--- !u!1001 &1665569103
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 696250515929767166, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: littleGuyManager
+      value: 
+      objectReference: {fileID: 1935021779}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938843968360947884, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_Name
+      value: Little guy (12)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
 --- !u!1001 &1794360112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -405,6 +958,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 696250515929767166, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: littleGuyManager
+      value: 
+      objectReference: {fileID: 1935021779}
     - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.12
@@ -448,6 +1005,67 @@ PrefabInstance:
     - target: {fileID: 8938843968360947884, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
       propertyPath: m_Name
       value: Little guy (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+--- !u!1001 &1904663896
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 696250515929767166, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: littleGuyManager
+      value: 
+      objectReference: {fileID: 1935021779}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938843968360947884, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_Name
+      value: Little guy (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -498,9 +1116,131 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e273c34a7724c40b6d155f1103587f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LittleGuyManager
-  littleGuysPerRow: 5
-  littleGuysSpacing: 2
-  firstPosition: {x: 2, y: 2}
+  littleGuysPerRow: 4
+  littleGuysSpacing: 4
+  firstPosition: {x: 6, y: 6}
+--- !u!1001 &2006869041
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 696250515929767166, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: littleGuyManager
+      value: 
+      objectReference: {fileID: 1935021779}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938843968360947884, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_Name
+      value: Little guy (8)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+--- !u!1001 &2077229931
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 696250515929767166, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: littleGuyManager
+      value: 
+      objectReference: {fileID: 1935021779}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938843968360947884, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_Name
+      value: Little guy (10)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
 --- !u!1001 &742994339117123750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -566,6 +1306,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 696250515929767166, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: littleGuyManager
+      value: 
+      objectReference: {fileID: 1935021779}
     - target: {fileID: 1558692566898590827, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.4
@@ -623,6 +1367,18 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 742994339117123750}
   - {fileID: 7109899460387569806}
+  - {fileID: 1904663896}
+  - {fileID: 873078228}
+  - {fileID: 1337627667}
   - {fileID: 1261080953}
+  - {fileID: 1292551673}
+  - {fileID: 1236373266}
+  - {fileID: 2077229931}
   - {fileID: 1794360112}
+  - {fileID: 1665569103}
+  - {fileID: 958886577}
+  - {fileID: 1360951945}
+  - {fileID: 2006869041}
+  - {fileID: 1161267843}
+  - {fileID: 479582403}
   - {fileID: 1935021778}

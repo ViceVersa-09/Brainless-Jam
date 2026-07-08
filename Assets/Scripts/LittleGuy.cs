@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 
 public class LittleGuy : MonoBehaviour
@@ -18,10 +17,11 @@ public class LittleGuy : MonoBehaviour
 
     }
 
+    [HideInInspector] public int targetIndex;
     [HideInInspector] public Vector3 target;
 
     [HideInInspector] public State currentState;
-    PlayerController playerController;
+    State state;
     Rigidbody2D rb;
     CircleCollider2D col;
     LittleGuyManager littleGuyManager;
@@ -29,7 +29,6 @@ public class LittleGuy : MonoBehaviour
     private void Awake()
     {
         currentState = State.FarmingHome;
-        playerController = FindFirstObjectByType<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<CircleCollider2D>();
         littleGuyManager = FindFirstObjectByType<LittleGuyManager>();
@@ -37,12 +36,13 @@ public class LittleGuy : MonoBehaviour
 
     private void Start()
     {
-        littleGuyManager.UpdateLittleGuysTarget();
-        target = LittleGuyManager.LittleGuysTarget[GetIndex()];
+        currentState = State.FollowingPlayer;
+        state = currentState;
     }
 
     private void Update()
     {
+        CheckBehaviorChanged();
         Behaviour();
     }
 
@@ -50,33 +50,22 @@ public class LittleGuy : MonoBehaviour
     {
         if (currentState == State.FollowingPlayer)
         {
+            target = littleGuyManager.LittleGuysTarget[targetIndex];
             col.radius = 1;
 
-            if (Vector2.Distance(transform.position, target) > distance)
-            {
-                rb.linearVelocity = moveSpeed * (target - transform.position);
-            }
-            else
-            {
-                rb.linearVelocity = Vector2.zero;
-            }
+            transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
         }
     }
 
-    int GetIndex()
+    void CheckBehaviorChanged()
     {
-        for (int i = 0; i < LittleGuyManager.LittleGuysTarget.Length; i++)
+        if (state != currentState)
         {
-            foreach (LittleGuy li in FindObjectsByType<LittleGuy>(FindObjectsSortMode.None))
+            if (state == State.FollowingPlayer)
             {
-                if (li.target == LittleGuyManager.LittleGuysTarget[i])
-                {
-                    goto OuterLoop;
-                }
+                littleGuyManager.GiveLittleGuysIndex();
             }
-            return i;
-        OuterLoop: continue;
+            state = currentState;
         }
-        return 0;
     }
 }
