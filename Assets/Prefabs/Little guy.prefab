@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1558692566898590827}
   - component: {fileID: 696250515929767166}
+  - component: {fileID: 8631052525804240350}
   - component: {fileID: 6746548733285343895}
   - component: {fileID: 5050794089914476711}
   - component: {fileID: 3743979490558743665}
@@ -52,6 +53,27 @@ MonoBehaviour:
   targetIndex: 0
   target: {x: 0, y: 0, z: 0}
   currentState: 0
+--- !u!114 &8631052525804240350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8938843968360947884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224eb386dd8f7914bbfdc6aec04fe987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  what: 2
+  health: 5
+  damagePerGuy: 0
+  itemDrop: {fileID: 0}
+  shakeMagnitude: 0
+  shakeDuration: 0
+  defaultSprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  outlinedSprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  canInteract: 0
 --- !u!212 &6746548733285343895
 SpriteRenderer:
   serializedVersion: 2

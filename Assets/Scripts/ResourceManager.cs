@@ -29,6 +29,8 @@ public class ResourceManager : MonoBehaviour
 
     public void EndOfDayMaterials()
     {
+        gameManager.leftoverBread = gameManager.bread;
+
         wood += currentWood;
         currentWood = 0;
 

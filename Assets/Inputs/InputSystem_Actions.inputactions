@@ -16,7 +16,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Attack",
+                    "name": "Mine",
                     "type": "Button",
                     "id": "6c2ab1b8-8984-453a-af3d-a3c78ae1679a",
                     "expectedControlType": "",
@@ -46,6 +46,15 @@
                     "name": "Pause",
                     "type": "Button",
                     "id": "ff485acf-9ac2-4cef-aa5a-82e37f9fae32",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UnRecruit",
+                    "type": "Button",
+                    "id": "506748aa-7a25-48da-bb6e-e2ff02c19b6d",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -192,7 +201,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Attack",
+                    "action": "Mine",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -203,7 +212,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Attack",
+                    "action": "Mine",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -214,7 +223,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Touch",
-                    "action": "Attack",
+                    "action": "Mine",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -225,7 +234,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "Attack",
+                    "action": "Mine",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -236,7 +245,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
-                    "action": "Attack",
+                    "action": "Mine",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -281,6 +290,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bab4ef7b-a09c-40fd-86b2-6132df9d0974",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UnRecruit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
