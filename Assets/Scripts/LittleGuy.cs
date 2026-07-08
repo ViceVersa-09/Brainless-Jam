@@ -17,21 +17,32 @@ public class LittleGuy : MonoBehaviour
 
     }
 
+    [HideInInspector] public int targetIndex;
+    [HideInInspector] public Vector3 target;
+
     [HideInInspector] public State currentState;
-    PlayerController playerController;
+    State state;
     Rigidbody2D rb;
     CircleCollider2D col;
+    LittleGuyManager littleGuyManager;
+
+    private void Awake()
+    {
+        currentState = State.FarmingHome;
+        rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<CircleCollider2D>();
+        littleGuyManager = FindFirstObjectByType<LittleGuyManager>();
+    }
 
     private void Start()
     {
-        currentState = State.FarmingHome;
-        playerController = FindFirstObjectByType<PlayerController>();
-        rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<CircleCollider2D>();
+        currentState = State.FollowingPlayer;
+        state = currentState;
     }
 
     private void Update()
     {
+        CheckBehaviorChanged();
         Behaviour();
     }
 
@@ -39,16 +50,22 @@ public class LittleGuy : MonoBehaviour
     {
         if (currentState == State.FollowingPlayer)
         {
+            target = littleGuyManager.LittleGuysTarget[targetIndex];
             col.radius = 1;
 
-            if (Vector2.Distance(transform.position, playerController.transform.position) > distance)
+            transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+        }
+    }
+
+    void CheckBehaviorChanged()
+    {
+        if (state != currentState)
+        {
+            if (state == State.FollowingPlayer)
             {
-                rb.linearVelocity = moveSpeed * (playerController.transform.position - transform.position);
+                littleGuyManager.GiveLittleGuysIndex();
             }
-            else
-            {
-                rb.linearVelocity = Vector2.zero;
-            }
+            state = currentState;
         }
     }
 }

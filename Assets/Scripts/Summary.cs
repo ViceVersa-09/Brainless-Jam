@@ -81,8 +81,8 @@ public class Summary : MonoBehaviour
 
     void Bread()
     {
-        breadText.text = gameManager.bread + " Bread Baked";
-        leftoverText.text = "+" + gameManager.leftoverBread + " leftover";
+        breadText.text = resourceManager.bread + " Bread Baked";
+        timeText.text = "+" + gameManager.FloatToIntRoundedUp(Day.TimeUntilNight) + " seconds";
     }
 
     void Wood()

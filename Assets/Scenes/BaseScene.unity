@@ -274,11 +274,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   startBread: 9
-  currentDay: 0
-  currentBread: 0
-  day: 0
-  bread: 0
-  stone: 0
+  timePerTick: 10
+  ticksPerDay: 24
 --- !u!4 &498305901
 Transform:
   m_ObjectHideFlags: 0
@@ -19825,6 +19822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1678933197}
   - component: {fileID: 1678933198}
+  - component: {fileID: 1678933199}
   - component: {fileID: 1678933196}
   m_Layer: 0
   m_Name: FarmBarn
@@ -19922,6 +19920,7 @@ MonoBehaviour:
   gates: {fileID: 858009378}
   currentWood: 0
   currentStone: 0
+  currentBread: 0
   wood: 0
   stone: 0
 --- !u!1001 &742994339117123750

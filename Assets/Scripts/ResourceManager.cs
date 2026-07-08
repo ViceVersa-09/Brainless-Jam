@@ -6,31 +6,23 @@ public class ResourceManager : MonoBehaviour
 
     [HideInInspector] public int currentWood;
     [HideInInspector] public int currentStone;
+    [HideInInspector] public int currentBread;
 
     [HideInInspector] public int wood;
     [HideInInspector] public int stone;
-
-    GameManager gameManager;
-
-    private void Awake()
-    {
-        gameManager = GameManager.instance;
-
-        GameManager.Day.CurrentDay++;
-    }
+    [HideInInspector] public int bread;
 
     public void CountBread()
     {
         LittleGuy[] everyLittleGuy = FindObjectsByType<LittleGuy>(FindObjectsSortMode.None);
 
-        gameManager.bread = 0;
-        gameManager.bread += gameManager.leftoverBread;
+        bread = 0;
 
         foreach (var littleGuy in everyLittleGuy)
         {
             if (littleGuy.currentState == LittleGuy.State.FarmingHome)
             {
-                gameManager.bread++;
+                bread++;
             }
         }
     }
@@ -44,5 +36,8 @@ public class ResourceManager : MonoBehaviour
 
         stone += currentStone;
         currentStone = 0;
+
+        bread += currentBread;
+        currentBread = 0;
     }
 }
