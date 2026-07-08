@@ -7,6 +7,7 @@ public class ResourceManager : MonoBehaviour
     [HideInInspector] public int currentWood;
     [HideInInspector] public int currentStone;
     [HideInInspector] public int currentBread;
+    [HideInInspector] public int leftoverBread;
 
     [HideInInspector] public int wood;
     [HideInInspector] public int stone;
@@ -29,7 +30,7 @@ public class ResourceManager : MonoBehaviour
 
     public void EndOfDayMaterials()
     {
-        gameManager.leftoverBread = gameManager.bread;
+        leftoverBread = bread;
 
         wood += currentWood;
         currentWood = 0;
