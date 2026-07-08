@@ -8,19 +8,20 @@ public class LittleGuy : MonoBehaviour
     [Header("Following Player")]
     [SerializeField] float distance;
 
-    [HideInInspector] public enum State
+    [HideInInspector]
+    public enum State
     {
         FollowingPlayer,
         ReturningHome,
         FarmingHome,
         FarmingWildAlone,
-
     }
 
     [HideInInspector] public int targetIndex;
     [HideInInspector] public Vector3 target;
 
     [HideInInspector] public State currentState;
+    PlayerController playerController;
     State state;
     Rigidbody2D rb;
     CircleCollider2D col;
@@ -29,6 +30,7 @@ public class LittleGuy : MonoBehaviour
     private void Awake()
     {
         currentState = State.FarmingHome;
+        playerController = FindFirstObjectByType<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<CircleCollider2D>();
         littleGuyManager = FindFirstObjectByType<LittleGuyManager>();
@@ -53,7 +55,12 @@ public class LittleGuy : MonoBehaviour
             target = littleGuyManager.LittleGuysTarget[targetIndex];
             col.radius = 1;
 
-            transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+            if (Vector2.Distance(transform.position, playerController.transform.position) > distance)
+            {
+                rb.linearVelocity = moveSpeed * (playerController.transform.position - transform.position);
+            }
+            else
+                transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
         }
     }
 
@@ -63,6 +70,7 @@ public class LittleGuy : MonoBehaviour
         {
             if (state == State.FollowingPlayer)
             {
+                rb.linearVelocity = Vector2.zero;
                 littleGuyManager.GiveLittleGuysIndex();
             }
             state = currentState;

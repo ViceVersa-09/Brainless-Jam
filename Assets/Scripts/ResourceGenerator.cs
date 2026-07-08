@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TerrainGenerator : MonoBehaviour
+public class ResourceGenerator : MonoBehaviour
 {
     [Header("Delay Settings")]
     [SerializeField] private float treeDelay = 0.1f;
