@@ -59,6 +59,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Text",
+                    "type": "Button",
+                    "id": "b655974c-9c70-4d3c-bd30-1940bc3a2679",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -301,6 +310,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "UnRecruit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4bb76ce1-d0ad-4360-b327-0def827cf0d5",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Text",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

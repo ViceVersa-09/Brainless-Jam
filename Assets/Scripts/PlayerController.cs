@@ -31,19 +31,15 @@ public class PlayerController : MonoBehaviour
         // I'm doing it this way so that it'll be easier to make things like cutscenes
         moveVector = moveAction.ReadValue<Vector2>();
 
-        if (tutorial != null && !tutorial.cutscene)
+        if (tutorial == null || tutorial != null && !tutorial.cutscene)
         {
-            MovePlayer(moveVector);
-        }
-        else if (tutorial == null)
-        {
-            MovePlayer(moveVector);
-        }
+            MovePlayer(moveVector, moveSpeed);
+        }      
     }
 
-    public void MovePlayer(Vector2 moveVector)
+    public void MovePlayer(Vector2 moveVector, float moveSpeed)
     {
-        if (moveAction.IsPressed() && canControl)
+        if (canControl)
         {
             rb.linearVelocity = moveVector * moveSpeed;
         }

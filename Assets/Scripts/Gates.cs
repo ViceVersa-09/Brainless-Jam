@@ -3,12 +3,13 @@ using UnityEngine.InputSystem;
 
 public class Gates : MonoBehaviour
 {
-    bool canInteract;
+    public bool canInteract;
 
     GameManager gameManager;
     InputAction interactAction;
     Animator animator;
-    BoxCollider2D gateCollider;
+    public BoxCollider2D gateCollider;
+    Tutorial tutorial;
 
     private void Start()
     {
@@ -16,14 +17,18 @@ public class Gates : MonoBehaviour
         interactAction = InputSystem.actions.FindAction("Interact");
         animator = GetComponent<Animator>();
         gateCollider = GetComponent<BoxCollider2D>();
+        tutorial = FindFirstObjectByType<Tutorial>();
     }
 
     private void Update()
     {
-        if (canInteract && interactAction.triggered)
+        if (tutorial != null && tutorial.canOpenGates || tutorial == null)
         {
-            OpenGates();
-        }
+            if (canInteract && interactAction.triggered)
+            {
+                OpenGates();
+            }
+        }       
     }
 
     private void OnTriggerEnter2D(Collider2D other)
