@@ -21,7 +21,6 @@ public class Tutorial : MonoBehaviour
     [SerializeField] string[] texts3;
 
     [HideInInspector] public bool cutscene;
-    bool buttonPressed;
     [HideInInspector] public bool canOpenGates;
 
     PlayerController playerController;
@@ -38,23 +37,10 @@ public class Tutorial : MonoBehaviour
         StartCoroutine(FirstCutscene());
     }
 
-    private void Update()
-    {
-        CheckForAction();
-    }
-
     void UpdateText(string text)
     {
         parentObjectUI.SetActive(true);
         tutorialText.text = text;
-    }
-
-    void CheckForAction()
-    {
-        if (textAction.triggered)
-        {
-            buttonPressed = true;
-        }
     }
 
     IEnumerator FirstCutscene()
@@ -70,8 +56,7 @@ public class Tutorial : MonoBehaviour
         {
             Debug.Log(text);
             UpdateText(text);
-            yield return new WaitUntil(() => buttonPressed);
-            buttonPressed = false;
+            yield return new WaitUntil(() => textAction.triggered);
         }
         
         parentObjectUI.SetActive(false);
@@ -102,8 +87,7 @@ public class Tutorial : MonoBehaviour
         {
             Debug.Log(text);
             UpdateText(text);
-            yield return new WaitUntil(() => buttonPressed);
-            buttonPressed = false;
+            yield return new WaitUntil(() => textAction.triggered);
         }
 
         parentObjectUI.SetActive(false);
@@ -122,8 +106,7 @@ public class Tutorial : MonoBehaviour
         {
             Debug.Log(text);
             UpdateText(text);
-            yield return new WaitUntil(() => buttonPressed);
-            buttonPressed = false;
+            yield return new WaitUntil(() => textAction.triggered);
         }
 
         parentObjectUI.SetActive(false);
