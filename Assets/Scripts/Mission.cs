@@ -21,8 +21,8 @@ public class Mission : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float slowDownTime;
 
-    int woodMission;
-    int stoneMission;
+    [HideInInspector] public int woodMission;
+    [HideInInspector] public int stoneMission;
     bool open = true;
 
     ResourceManager resourceManager;

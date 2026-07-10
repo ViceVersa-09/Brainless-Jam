@@ -4842,7 +4842,11 @@ MonoBehaviour:
     too many or too few.
   - Try recruiting 3 little guys, no more and no less.
   texts2:
-  - Congratulations, you now have 3 little guys following you! The rest of the little
+  - Now you have 5 little guys following you, that should be more than enough.
+  - In fact, it may be too much. Go ahead and unrecruit 2 of them by clicking [Q]
+    so that you're only bringing 3 of them with you.
+  texts3:
+  - Congratulations, you now have 5 little guys following you! The rest of the little
     guys will stay at the farm and bake bread for the next day. The amount of bread
     you have decides how many little guys you can bring with you.
   - The day technically hasn't really started until you open the gates to your farm.
@@ -4850,13 +4854,14 @@ MonoBehaviour:
     for the rest of the day once you open the gates.
   - I think it's time to head out into the wild, the gates are located right above
     where you started.
-  texts3:
+  texts4:
   - 'At the start of each day you will get a mission. It will be a goal of how many
     materials you need to get. '
   - You might have noticed, and maybe even clicked on, the arrow at the bottom of
     the screen. It shows you your current mission and progress towards it.
   - Go collect what you need to reach its demands. The more little guys you have
     with you, the faster you will mine resources.
+  texts5: []
   cutscene: 0
   canOpenGates: 0
 --- !u!1 &1253557475
@@ -13784,7 +13789,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 12
+      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -13794,7 +13799,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 15
+      m_TileSpriteIndex: 12
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -13854,7 +13859,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 14
+      m_TileSpriteIndex: 11
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -13863,8 +13868,8 @@ Tilemap:
   - first: {x: -15, y: 3, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 11
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -14213,8 +14218,8 @@ Tilemap:
   - first: {x: -23, y: 4, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 16
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -14224,7 +14229,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 4
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -14284,7 +14289,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 12
+      m_TileSpriteIndex: 13
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -14294,7 +14299,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 7
+      m_TileSpriteIndex: 14
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -19692,14 +19697,14 @@ Tilemap:
       m_AllTileFlags: 2
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 713
+  - m_RefCount: 715
     m_Data: {fileID: 11400000, guid: 9886566cccae8ed4fab205ed97384a61, type: 2}
-  - m_RefCount: 355
+  - m_RefCount: 353
     m_Data: {fileID: 11400000, guid: a01b80faf3387f044be1284fb5a7e69c, type: 2}
   - m_RefCount: 394
     m_Data: {fileID: 11400000, guid: bb82f568a7bb79448abdf2b5a9edc7d9, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 604
+  - m_RefCount: 606
     m_Data: {fileID: -1250986856, guid: 5711022de25cd8c40b40b478a93f6ead, type: 3}
   - m_RefCount: 85
     m_Data: {fileID: -4267605789689379492, guid: 5711022de25cd8c40b40b478a93f6ead, type: 3}
@@ -19713,7 +19718,7 @@ Tilemap:
     m_Data: {fileID: 237948111, guid: 5711022de25cd8c40b40b478a93f6ead, type: 3}
   - m_RefCount: 19
     m_Data: {fileID: 1815817707, guid: 5711022de25cd8c40b40b478a93f6ead, type: 3}
-  - m_RefCount: 14
+  - m_RefCount: 13
     m_Data: {fileID: 386273763, guid: 5711022de25cd8c40b40b478a93f6ead, type: 3}
   - m_RefCount: 17
     m_Data: {fileID: 265385943, guid: 5711022de25cd8c40b40b478a93f6ead, type: 3}
@@ -19723,13 +19728,13 @@ Tilemap:
     m_Data: {fileID: 746819871, guid: 5711022de25cd8c40b40b478a93f6ead, type: 3}
   - m_RefCount: 17
     m_Data: {fileID: 1452533541, guid: 5711022de25cd8c40b40b478a93f6ead, type: 3}
-  - m_RefCount: 9
+  - m_RefCount: 8
     m_Data: {fileID: 1120508686, guid: 5711022de25cd8c40b40b478a93f6ead, type: 3}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 6039874494087585369, guid: 04f474cf85f1b4d4eb43547b265093fd, type: 3}
   - m_RefCount: 38
     m_Data: {fileID: 1351375272, guid: 5711022de25cd8c40b40b478a93f6ead, type: 3}
-  - m_RefCount: 85
+  - m_RefCount: 84
     m_Data: {fileID: -622895763, guid: 5711022de25cd8c40b40b478a93f6ead, type: 3}
   - m_RefCount: 12
     m_Data: {fileID: -43518788, guid: 5711022de25cd8c40b40b478a93f6ead, type: 3}
@@ -19789,15 +19794,15 @@ Tilemap:
       e00: 0
       e01: 0
       e02: 0
-      e03: -0.00000003452817
+      e03: -5.4558506e+19
       e10: 0
       e11: 0
       e12: 0
-      e13: 1.46e-43
+      e13: 5.9e-44
       e20: 0
       e21: 0
       e22: 1e-45
-      e23: 0.0008022096
+      e23: 973.17773
       e30: 0
       e31: 0
       e32: 0
