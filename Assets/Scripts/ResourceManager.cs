@@ -17,13 +17,13 @@ public class ResourceManager : MonoBehaviour
     {
         LittleGuy[] everyLittleGuy = FindObjectsByType<LittleGuy>(FindObjectsSortMode.None);
 
-        bread = 0;
+        currentBread = 0;
 
         foreach (var littleGuy in everyLittleGuy)
         {
             if (littleGuy.currentState == LittleGuy.State.FarmingHome)
             {
-                bread++;
+                currentBread++;
             }
         }
     }

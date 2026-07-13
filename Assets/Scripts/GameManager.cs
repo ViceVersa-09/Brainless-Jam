@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     }
 
     [Header("Values")]
-    [SerializeField] int startBread;
+    [SerializeField] public int startBread;
 
 
     [Header("Day")]
@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void EndGame()
+    public void EndGame()
     {
         currentDay++;
         resourceManager.CountBread();
