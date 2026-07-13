@@ -4863,6 +4863,7 @@ MonoBehaviour:
     the screen. It shows you your current mission and progress towards it.
   - Go collect what you need to reach its demands. The more little guys you have
     with you, the faster you will mine resources.
+  - You can also leave a little guy to mine alone, but they are very slow at it.
   texts5:
   - Well done! As yoo probably noticed, your little guys pick up the materials that
     you mine and bring them back to the barn.
@@ -19999,7 +20000,7 @@ GameObject:
   - component: {fileID: 1678933197}
   - component: {fileID: 1678933198}
   - component: {fileID: 1678933196}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FarmBarn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
