@@ -9,6 +9,7 @@ public class Pickup : MonoBehaviour
     }
 
     [SerializeField] WhatMaterial material;
+    [SerializeField] Vector2 guyOffset;
 
     LittleGuy[] littleGuys;
     LittleGuy chosen;
@@ -46,6 +47,11 @@ public class Pickup : MonoBehaviour
 
             chosen.currentState = LittleGuy.State.FarmingHome;
             Destroy(gameObject);
+        }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("LittleGuy"))
+        {
+            transform.SetParent(chosen.transform);
+            transform.localPosition = (Vector2)chosen.transform.position + guyOffset;
         }
     }
 }
