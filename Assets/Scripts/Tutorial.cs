@@ -64,6 +64,7 @@ public class Tutorial : MonoBehaviour
             Debug.Log(text);
             UpdateText(text);
             yield return new WaitUntil(() => textAction.triggered);
+            yield return new WaitForEndOfFrame();
         }
         
         parentObjectUI.SetActive(false);
@@ -96,6 +97,7 @@ public class Tutorial : MonoBehaviour
             Debug.Log(text);
             UpdateText(text);
             yield return new WaitUntil(() => textAction.triggered);
+            yield return new WaitForEndOfFrame();
         }
 
         parentObjectUI.SetActive(false);
@@ -128,6 +130,7 @@ public class Tutorial : MonoBehaviour
             Debug.Log(text);
             UpdateText(text);
             yield return new WaitUntil(() => textAction.triggered);
+            yield return new WaitForEndOfFrame();
         }
 
         parentObjectUI.SetActive(false);
@@ -147,6 +150,7 @@ public class Tutorial : MonoBehaviour
             Debug.Log(text);
             UpdateText(text);
             yield return new WaitUntil(() => textAction.triggered);
+            yield return new WaitForEndOfFrame();
         }
 
         parentObjectUI.SetActive(false);
@@ -168,6 +172,7 @@ public class Tutorial : MonoBehaviour
             Debug.Log(text);
             UpdateText(text);
             yield return new WaitUntil(() => textAction.triggered);
+            yield return new WaitForEndOfFrame();
         }
 
         parentObjectUI.SetActive(false);
@@ -186,6 +191,7 @@ public class Tutorial : MonoBehaviour
             Debug.Log(text);
             UpdateText(text);
             yield return new WaitUntil(() => textAction.triggered);
+            yield return new WaitForEndOfFrame();
         }
 
         wolf = Instantiate(wolfPrefab, (Vector2)playerController.transform.position + wolfOffset, Quaternion.identity);
@@ -206,6 +212,7 @@ public class Tutorial : MonoBehaviour
             Debug.Log(text);
             UpdateText(text);
             yield return new WaitUntil(() => textAction.triggered);
+            yield return new WaitForEndOfFrame();
         }
 
         parentObjectUI.SetActive(false);

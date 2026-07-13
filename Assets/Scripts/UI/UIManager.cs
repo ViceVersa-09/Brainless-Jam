@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class UIManager : MonoBehaviour
 
     [Header("UI References")]
     public TextMeshProUGUI dayCountText;
+    [SerializeField] float disappearTimeDayText;
 
     //[Header("Menu")]
     public GameObject pauseScreen;
@@ -30,6 +32,8 @@ public class UIManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+
+        dayCountText.CrossFadeAlpha(0, disappearTimeDayText, true);
     }
 
     #region UI
@@ -44,6 +48,7 @@ public class UIManager : MonoBehaviour
         if (breadCountText != null)
             breadCountText.text = bread;
     }
+
     #endregion
     #region Menu
     public void PauseMenu(bool value)

@@ -177,7 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   mixer: {fileID: 24100000, guid: 07c66cc9bd31fac4b8e5a9e1abec0c08, type: 2}
   musicSource: {fileID: 4820837128733864525}
-  musicClip: {fileID: 0}
+  musicClip: {fileID: 8300000, guid: 7b95c1e00bdebd247a8dc9b28ae956c3, type: 3}
   sFXSource: {fileID: 9024109575845468470}
 --- !u!1 &5901112981512103511
 GameObject:
