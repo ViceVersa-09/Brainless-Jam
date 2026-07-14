@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     Tutorial tutorial;
     InputAction unRecruitAction;
 
+    // this will tell the little guys at which direction the player is heading at
+    public Vector2 LastMoveDirection { get; private set; } = Vector2.down;
+
     private void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
@@ -36,7 +39,7 @@ public class PlayerController : MonoBehaviour
         if (tutorial == null || tutorial != null && !tutorial.cutscene)
         {
             MovePlayer(moveVector, moveSpeed);
-        }  
+        }
         else if (tutorial != null && tutorial.cutscene)
         {
             rb.linearVelocity = Vector2.zero;
@@ -52,6 +55,11 @@ public class PlayerController : MonoBehaviour
     {
         if (canControl)
         {
+            if (moveVector != Vector2.zero)
+            {
+                LastMoveDirection = moveVector.normalized;
+            }
+
             rb.linearVelocity = moveVector * moveSpeed;
         }
         else
@@ -69,6 +77,7 @@ public class PlayerController : MonoBehaviour
             if (littleGuy.currentState == LittleGuy.State.FollowingPlayer)
             {
                 littleGuy.currentState = LittleGuy.State.FarmingHome;
+                littleGuy.GetComponent<Interactable>().EnableRecruiting();
                 break;
             }
         }

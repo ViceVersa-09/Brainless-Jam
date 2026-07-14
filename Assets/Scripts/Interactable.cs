@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -28,21 +27,25 @@ public class Interactable : MonoBehaviour
     [SerializeField] public Sprite outlinedSprite;
 
     public bool canInteract;
-    bool canAttack = true;
+    public bool canAttack = true;
+    
+    bool canRecruit = true;
 
     SpriteRenderer spriteRenderer;
     InputAction mineAction;
-    InputAction recruitAction;    
+    InputAction recruitAction;
+    
     PlayerController playerController;
+    LittleGuyManager littleGuyManager;
 
     #region Unity Methods
-
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerController = FindFirstObjectByType<PlayerController>();
+        littleGuyManager = FindFirstObjectByType<LittleGuyManager>();
         mineAction = InputSystem.actions.FindAction("Mine");
-        recruitAction = InputSystem.actions.FindAction("Interact");     
+        recruitAction = InputSystem.actions.FindAction("Interact");
     }
 
     private void Update()
@@ -83,7 +86,7 @@ public class Interactable : MonoBehaviour
     void CheckMineInput()
     {
         if (mineAction.triggered && canInteract && playerController.interactingWith == this)
-        {        
+        {
             if (what == What.Wood || what == What.Stone)
             {
                 StartCoroutine(Mine());
@@ -104,7 +107,7 @@ public class Interactable : MonoBehaviour
         foreach (var littleGuy in littleGuys)
         {
             if (littleGuy.currentState == LittleGuy.State.FollowingPlayer)
-            {
+            {   
                 health -= damagePerGuy;
             }
         }
@@ -118,13 +121,13 @@ public class Interactable : MonoBehaviour
 
             while (elapsed < shakeDuration)
             {
-                float offsetX = UnityEngine.Random.Range(-1, 1) * shakeMagnitude;
-                float offsetY = UnityEngine.Random.Range(-1, 1) * shakeMagnitude;
+                float offsetX = Random.Range(-1, 1) * shakeMagnitude;
+                float offsetY = Random.Range(-1, 1) * shakeMagnitude;
                 transform.localPosition = originalPos + new Vector2(offsetX, offsetY);
                 yield return new WaitForEndOfFrame();
                 elapsed += Time.deltaTime;
             }
-            
+
             transform.localPosition = originalPos;
             yield return new WaitForSeconds(timeBetweenShake - shakeDuration);
         }
@@ -153,8 +156,8 @@ public class Interactable : MonoBehaviour
 
         while (elapsed < shakeDuration)
         {
-            float offsetX = UnityEngine.Random.Range(-1, 1) * shakeMagnitude;
-            float offsetY = UnityEngine.Random.Range(-1, 1) * shakeMagnitude;
+            float offsetX = Random.Range(-1, 1) * shakeMagnitude;
+            float offsetY = Random.Range(-1, 1) * shakeMagnitude;
             transform.localPosition = originalPos + new Vector2(offsetX, offsetY);
             yield return new WaitForEndOfFrame();
             elapsed += Time.deltaTime;
@@ -178,19 +181,28 @@ public class Interactable : MonoBehaviour
         if (itemDrop != null)
         {
             Instantiate(itemDrop);
-        }        
+        }
         Destroy(gameObject);
     }
 
     void CheckRecruitInput()
     {
-        if (recruitAction.triggered && canInteract && what == What.LittleGuy && playerController.interactingWith == this)
+        if (recruitAction.triggered && canInteract && canRecruit && what == What.LittleGuy && playerController.interactingWith == this)
         {
             LittleGuy littleGuy = GetComponent<LittleGuy>();
 
-            enabled = false;
+            canRecruit = false;
+
             littleGuy.currentState = LittleGuy.State.FollowingPlayer;
+
+            littleGuyManager.RefreshFollowers();
+
             playerController.maxHealth += health;
         }
+    }
+
+    public void EnableRecruiting()
+    {
+        canRecruit = true;
     }
 }

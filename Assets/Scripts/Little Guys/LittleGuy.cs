@@ -56,11 +56,11 @@ public class LittleGuy : MonoBehaviour
             {
                 target = littleGuyManager.LittleGuysTarget[targetIndex];
             }
-            
+
             col.radius = 1;
             transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
         }
-        
+
         if (currentState == State.FarmingHome)
         {
             col.radius = 2;
@@ -78,7 +78,7 @@ public class LittleGuy : MonoBehaviour
                     }
                 }
             }
-            
+
             transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
         }
         else if (chosenNode != null)

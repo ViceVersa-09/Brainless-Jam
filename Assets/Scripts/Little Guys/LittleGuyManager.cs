@@ -4,19 +4,20 @@ public class LittleGuyManager : MonoBehaviour
 {
     [SerializeField] int littleGuysPerRow = 5;
     [SerializeField] float littleGuysSpacing = 2f;
-    [SerializeField] Vector2 firstPosition = new(2, 2);
 
     public Vector3[] LittleGuysTarget { get { return littleGuysTarget; } }
 
-    GameObject player;
+    PlayerController player;
 
     LittleGuy[] littleGuys;
     static Vector3[] littleGuysTarget;
     Vector3 playerPosition;
 
+    Vector2 lastDirection;
+
     private void Awake()
     {
-        player = FindFirstObjectByType<PlayerController>().gameObject;
+        player = FindFirstObjectByType<PlayerController>();
     }
 
     private void Start()
@@ -27,10 +28,13 @@ public class LittleGuyManager : MonoBehaviour
 
     private void Update()
     {
-        if (playerPosition != player.transform.position)
+        PlayerController controller = player.GetComponent<PlayerController>();
+
+        if (playerPosition != player.transform.position || lastDirection != controller.LastMoveDirection)
         {
             UpdateLittleGuysTarget();
             playerPosition = player.transform.position;
+            lastDirection = controller.LastMoveDirection;
         }
     }
 
@@ -46,13 +50,29 @@ public class LittleGuyManager : MonoBehaviour
                 littleGuysFollowingPlayer++;
             }
         }
+
         littleGuysTarget = new Vector3[littleGuysFollowingPlayer];
+
+        Vector2 forward = player.GetComponent<PlayerController>().LastMoveDirection;
+        Vector2 behind = -forward;
+        Vector2 right = new Vector2(forward.y, -forward.x);
+
         littleGuysFollowingPlayer = 0;
+
         for (int i = 0; i < littleGuys.Length; i++)
         {
             if (littleGuys[i].currentState == LittleGuy.State.FollowingPlayer)
             {
-                littleGuysTarget[littleGuysFollowingPlayer] = (Vector2)player.transform.position + firstPosition - new Vector2(i % littleGuysPerRow * littleGuysSpacing, i / littleGuysPerRow * littleGuysSpacing);
+                int row = littleGuysFollowingPlayer / littleGuysPerRow;
+                int column = littleGuysFollowingPlayer % littleGuysPerRow;
+
+                float width = (littleGuysPerRow - 1) * 0.5f;
+
+                Vector2 sideways = (column - width) * littleGuysSpacing * right;
+                Vector2 backwards = (row + 1) * littleGuysSpacing * behind;
+
+                littleGuysTarget[littleGuysFollowingPlayer] = player.transform.position + (Vector3)(sideways + backwards);
+
                 littleGuysFollowingPlayer++;
             }
         }
@@ -63,13 +83,19 @@ public class LittleGuyManager : MonoBehaviour
         littleGuys = FindObjectsByType<LittleGuy>(FindObjectsSortMode.None);
         int littleGuysFollowingPlayer = 0;
 
-        for (int i = 0; i < littleGuys.Length -1; i++)
+        for (int i = 0; i < littleGuys.Length; i++)
         {
             if (littleGuys[i].currentState == LittleGuy.State.FollowingPlayer)
             {
-                littleGuysFollowingPlayer++;
                 littleGuys[i].targetIndex = littleGuysFollowingPlayer;
+                littleGuysFollowingPlayer++;
             }
         }
+    }
+
+    public void RefreshFollowers()
+    {
+        UpdateLittleGuysTarget();
+        GiveLittleGuysIndex();
     }
 }
