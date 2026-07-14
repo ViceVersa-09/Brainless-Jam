@@ -64,7 +64,10 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(AudioClip sFXClip)
     {
-        sFXSource.PlayOneShot(sFXClip);
+        if (sFXClip != null)
+        {
+            sFXSource.PlayOneShot(sFXClip);
+        }        
     }
 
     void UpdateVolume()

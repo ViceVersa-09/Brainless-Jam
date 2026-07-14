@@ -21,24 +21,24 @@ public class LittleGuy : MonoBehaviour
     [HideInInspector] public Vector3 target;
 
     [HideInInspector] public State currentState;
-    PlayerController playerController;
     State state;
     Rigidbody2D rb;
     CircleCollider2D col;
     LittleGuyManager littleGuyManager;
+    FarmingNode[] farmingNodes;
+    FarmingNode chosenNode;
 
     private void Awake()
     {
         currentState = State.FarmingHome;
-        playerController = FindFirstObjectByType<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<CircleCollider2D>();
         littleGuyManager = FindFirstObjectByType<LittleGuyManager>();
+        farmingNodes = FindObjectsByType<FarmingNode>(FindObjectsSortMode.None);
     }
 
     private void Start()
     {
-        currentState = State.FollowingPlayer;
         state = currentState;
     }
 
@@ -52,15 +52,39 @@ public class LittleGuy : MonoBehaviour
     {
         if (currentState == State.FollowingPlayer)
         {
-            target = littleGuyManager.LittleGuysTarget[targetIndex];
-            col.radius = 1;
-
-            if (Vector2.Distance(transform.position, playerController.transform.position) > distance)
+            if (littleGuyManager.LittleGuysTarget.Length > targetIndex)
             {
-                rb.linearVelocity = moveSpeed * (playerController.transform.position - transform.position);
+                target = littleGuyManager.LittleGuysTarget[targetIndex];
             }
-            else
-                transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+            
+            col.radius = 1;
+            transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+        }
+        
+        if (currentState == State.FarmingHome)
+        {
+            col.radius = 2;
+
+            if (chosenNode == null)
+            {
+                foreach (var node in farmingNodes)
+                {
+                    if (node.occupant == null)
+                    {
+                        node.occupant = this;
+                        target = node.transform.position;
+                        chosenNode = node;
+                        break;
+                    }
+                }
+            }
+            
+            transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+        }
+        else if (chosenNode != null)
+        {
+            chosenNode.occupant = null;
+            chosenNode = null;
         }
     }
 

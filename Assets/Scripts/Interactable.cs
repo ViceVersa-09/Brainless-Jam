@@ -184,7 +184,7 @@ public class Interactable : MonoBehaviour
 
     void CheckRecruitInput()
     {
-        if (recruitAction.triggered && canInteract && what == What.LittleGuy)
+        if (recruitAction.triggered && canInteract && what == What.LittleGuy && playerController.interactingWith == this)
         {
             LittleGuy littleGuy = GetComponent<LittleGuy>();
 

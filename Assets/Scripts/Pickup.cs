@@ -50,8 +50,13 @@ public class Pickup : MonoBehaviour
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("LittleGuy"))
         {
-            transform.SetParent(chosen.transform);
-            transform.localPosition = (Vector2)chosen.transform.position + guyOffset;
+            LittleGuy littleGuy = other.GetComponent<LittleGuy>();
+
+            if (littleGuy.currentState == LittleGuy.State.ReturningHome)
+            {
+                transform.SetParent(chosen.transform);
+                transform.localPosition = (Vector2)chosen.transform.position + guyOffset;
+            }  
         }
     }
 }

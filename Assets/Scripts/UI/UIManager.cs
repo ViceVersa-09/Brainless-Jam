@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -60,6 +61,13 @@ public class UIManager : MonoBehaviour
     {
         if (pauseScreen != null)
             pauseScreen.SetActive(value);
+    }
+
+    public void MainMenu()
+    {
+        Time.timeScale = 1;
+        pauseScreen.SetActive(false);
+        SceneManager.LoadSceneAsync(0);
     }
     #endregion
     #region GameObjects

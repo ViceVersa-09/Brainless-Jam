@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc736e9cbc62da4fb134f4fba0dcaa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LittleGuy
-  moveSpeed: 10
+  moveSpeed: 5
   distance: 2
   targetIndex: 0
   target: {x: 0, y: 0, z: 0}

@@ -36,7 +36,11 @@ public class PlayerController : MonoBehaviour
         if (tutorial == null || tutorial != null && !tutorial.cutscene)
         {
             MovePlayer(moveVector, moveSpeed);
-        }      
+        }  
+        else if (tutorial != null && tutorial.cutscene)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
 
         if (unRecruitAction.triggered)
         {
