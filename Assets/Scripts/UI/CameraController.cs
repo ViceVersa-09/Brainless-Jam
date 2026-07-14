@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class CameraController : MonoBehaviour
 {
@@ -98,5 +100,17 @@ public class CameraController : MonoBehaviour
             transform.position = Vector3.SmoothDamp(transform.position, GetTargetPosition(), ref velocity, smoothing);
         }
         shakeActive = false;
+    }
+
+    void Transition(int level)
+    {
+        if (shakeActive) // temporary until i actually do the transition
+        {
+
+        }
+        else
+        {
+            SceneManager.LoadScene(level);
+        }
     }
 }

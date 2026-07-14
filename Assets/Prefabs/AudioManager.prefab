@@ -179,6 +179,20 @@ MonoBehaviour:
   musicSource: {fileID: 4820837128733864525}
   musicClip: {fileID: 8300000, guid: 7b95c1e00bdebd247a8dc9b28ae956c3, type: 3}
   sFXSource: {fileID: 9024109575845468470}
+  buttonClip: {fileID: 8300000, guid: 36a203689fcbc5745964ae409f9dded6, type: 3}
+  woodMineClip: {fileID: 8300000, guid: 1a3e77c20ea0692468108416f8d7f148, type: 3}
+  stoneMineClip: {fileID: 8300000, guid: 960f3ef3e607e35419c6139e698be96a, type: 3}
+  woodBreakClip: {fileID: 8300000, guid: 257556130ae4538448176826236650ab, type: 3}
+  stoneBreakClip: {fileID: 8300000, guid: 155b56af64ab4cc41bb237ec0b5af80e, type: 3}
+  walkClip: {fileID: 8300000, guid: 11add3dd3a7283c45bf6693510429dc1, type: 3}
+  swooshClip: {fileID: 8300000, guid: 2293ad74c4a076e42a1160109c633542, type: 3}
+  wolfDamageClip: {fileID: 8300000, guid: a3aa7b8b986170249945d9dfdaa0a58c, type: 3}
+  damageClip: {fileID: 8300000, guid: 9023409016b2f854c971319b549991ae, type: 3}
+  recruitClip: {fileID: 8300000, guid: 6647ff22868fc8643b9a8b031b0fc712, type: 3}
+  unRecruitClip: {fileID: 8300000, guid: 7deb78fd646665146b781884dd90c7fb, type: 3}
+  gatesClip: {fileID: 8300000, guid: c2ef80ea25802944c8ed9734747bf7e7, type: 3}
+  dayStartClip: {fileID: 8300000, guid: b34fca498016fce479cbd57c440efad6, type: 3}
+  summaryClip: {fileID: 8300000, guid: 131a117a5695c3d4a95865f2fb52946c, type: 3}
 --- !u!1 &5901112981512103511
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,13 +23,12 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip walkClip;
     [SerializeField] AudioClip swooshClip;
     [SerializeField] AudioClip wolfDamageClip;
-    [SerializeField] AudioClip wolfAttackClip;
     [SerializeField] AudioClip damageClip;
     [SerializeField] AudioClip recruitClip;
     [SerializeField] AudioClip unRecruitClip;
     [SerializeField] AudioClip gatesClip;
-    [SerializeField] AudioClip dayEndClip;
     [SerializeField] AudioClip dayStartClip;
+    [SerializeField] AudioClip summaryClip;
 
     private void Awake()
     {
