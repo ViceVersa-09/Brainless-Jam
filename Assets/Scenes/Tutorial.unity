@@ -743,7 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e273c34a7724c40b6d155f1103587f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LittleGuyManager
-  littleGuysPerRow: 5
+  littleGuysPerRow: 3
   littleGuysSpacing: 1.5
 --- !u!4 &691816323
 Transform:
@@ -904,7 +904,7 @@ MonoBehaviour:
   treeGroupSpawnLimit: 20
   stoneSpawnLimit: 50
   stoneGroupSpawnLimit: 20
-  wolfSpawnLimit: 15
+  wolfSpawnLimit: 5
   startDelay: 0.1
   spawnCheckRadius: 0.5
   mini: {x: -65, y: -45}
@@ -5759,11 +5759,12 @@ MonoBehaviour:
   - In fact, it may be too much. Go ahead and unrecruit 2 of them so that you're
     only bringing 3 of them with you.
   texts3:
-  - Congratulations, you now have 3 little guys following you! The rest of the little
-    guys will stay at the farm and bake bread for the next day. The amount of bread
-    you have decides how many little guys you can bring with you.
+  - 'Congratulations, you now have 3 little guys following you! The rest of the little
+    guys will stay at the farm and bake bread for the next day. '
+  - The amount of bread you have decides how many little guys you can bring with
+    you.
   - The day technically hasn't really started until you open the gates to your farm.
-    The amount of little guys following you and the amount staying at home are locked
+  - The amount of little guys following you and the amount staying at home are locked
     for the rest of the day once you open the gates.
   - I think it's time to head out into the wild, the gates are located right above
     where you started.

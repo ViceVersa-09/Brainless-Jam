@@ -125,7 +125,7 @@ public class Tutorial : MonoBehaviour
 
         cutscene = true;
 
-        foreach (var text in texts2)
+        foreach (var text in texts3)
         {
             Debug.Log(text);
             UpdateText(text);

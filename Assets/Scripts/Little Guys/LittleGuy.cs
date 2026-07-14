@@ -27,6 +27,7 @@ public class LittleGuy : MonoBehaviour
     LittleGuyManager littleGuyManager;
     FarmingNode[] farmingNodes;
     FarmingNode chosenNode;
+    Interactable interactable;
 
     private void Awake()
     {
@@ -40,6 +41,7 @@ public class LittleGuy : MonoBehaviour
     private void Start()
     {
         state = currentState;
+        interactable = GetComponent<Interactable>();
     }
 
     private void Update()
@@ -57,8 +59,13 @@ public class LittleGuy : MonoBehaviour
                 target = littleGuyManager.LittleGuysTarget[targetIndex];
             }
 
+            interactable.enabled = false;
             col.radius = 1;
             transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            interactable.enabled = true;
         }
 
         if (currentState == State.FarmingHome)

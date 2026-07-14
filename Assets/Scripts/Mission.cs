@@ -1,7 +1,6 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class Mission : MonoBehaviour
 {
@@ -23,7 +22,7 @@ public class Mission : MonoBehaviour
 
     [HideInInspector] public int woodMission;
     [HideInInspector] public int stoneMission;
-    bool open = true;
+    bool open;
 
     ResourceManager resourceManager;
     RectTransform rect;
@@ -32,6 +31,10 @@ public class Mission : MonoBehaviour
     {
         resourceManager = FindFirstObjectByType<ResourceManager>();
         rect = GetComponent<RectTransform>();
+
+        open = closeButton.activeInHierarchy;
+        NewMission();
+        UpdateMissionText();
     }
 
     public void NewMission()

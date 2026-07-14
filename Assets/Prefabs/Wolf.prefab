@@ -79,6 +79,7 @@ MonoBehaviour:
   defaultSprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   outlinedSprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   canInteract: 0
+  canAttack: 1
 --- !u!212 &7245096831377590048
 SpriteRenderer:
   serializedVersion: 2
@@ -236,4 +237,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1
+  m_Radius: 0.5

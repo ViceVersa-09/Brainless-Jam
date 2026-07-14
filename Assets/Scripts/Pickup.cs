@@ -45,6 +45,8 @@ public class Pickup : MonoBehaviour
                 resourceManager.stone++;
             }
 
+            Mission mission = FindFirstObjectByType<Mission>();
+            mission.UpdateMissionText();
             chosen.currentState = LittleGuy.State.FarmingHome;
             Destroy(gameObject);
         }
