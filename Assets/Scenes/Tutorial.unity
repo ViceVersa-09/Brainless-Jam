@@ -4835,8 +4835,8 @@ MonoBehaviour:
   walkDistanceMarginal: 0.02
   target1: {x: -5.7, y: -0.64, z: 0}
   playerMoveSpeed: 1
-  wolfPrefab: {fileID: 5679632090492468569, guid: fb72abb249b95c2498c62bb1a5226967, type: 3}
-  wolfOffset: {x: 0, y: 7}
+  wolfPrefab: {fileID: 0}
+  wolfOffset: {x: 0, y: 0}
   texts1:
   - Hello! Welcome to your very own farm, the place you'll be spending the next couple
     of weeks.
@@ -4848,8 +4848,8 @@ MonoBehaviour:
   - Try recruiting 3 little guys, no more and no less.
   texts2:
   - Now you have 5 little guys following you, that should be more than enough.
-  - In fact, it may be too much. Go ahead and unrecruit 2 of them so that you're
-    only bringing 3 of them with you.
+  - In fact, it may be too much. Go ahead and unrecruit 2 of them by clicking [Q]
+    so that you're only bringing 3 of them with you.
   texts3:
   - Congratulations, you now have 5 little guys following you! The rest of the little
     guys will stay at the farm and bake bread for the next day. The amount of bread
@@ -4866,23 +4866,9 @@ MonoBehaviour:
     the screen. It shows you your current mission and progress towards it.
   - Go collect what you need to reach its demands. The more little guys you have
     with you, the faster you will mine resources.
-  - You can also leave a little guy to mine alone, but they are very slow at it.
-  texts5:
-  - Well done! As yoo probably noticed, your little guys pick up the materials that
-    you mine and bring them back to the barn.
-  - 'With them leaving your actions become weaker as you mine. '
-  - Let's head back to the farm, you need to be there before the day ends.
-  texts6:
-  - Oh no! Looks like a wolf is coming this way.
-  - You're going to have to fight it off!
-  texts7:
-  - 'Wow, that was really impressive! '
-  - Wolves are going to be a big hurdle for you to tackle. They live in caves which
-    means that you will have to destroy their cave if you want to stop them... Or
-    you could just try to ignore them.
-  - As I mentioned earlier, the more little guys you have, the more powerful you
-    are.
-  - Good luck!
+  texts5: []
+  texts6: []
+  texts7: []
   cutscene: 0
   canOpenGates: 0
 --- !u!1 &1253557475
@@ -20003,7 +19989,7 @@ GameObject:
   - component: {fileID: 1678933197}
   - component: {fileID: 1678933198}
   - component: {fileID: 1678933196}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: FarmBarn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20112,6 +20098,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2019358353890408063, guid: 3839579d9a231914ba4cf8416fd71892, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5207544987158716770, guid: b3683f1302e36d5419cc7b4d30855063, type: 3}
     - target: {fileID: 6358782316120056510, guid: 3839579d9a231914ba4cf8416fd71892, type: 3}
       propertyPath: m_Name
       value: Player
