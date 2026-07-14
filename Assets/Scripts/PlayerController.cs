@@ -16,10 +16,12 @@ public class PlayerController : MonoBehaviour
     Vector2 moveVector;
     Rigidbody2D rb;
     Tutorial tutorial;
+    InputAction unRecruitAction;
 
     private void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
+        unRecruitAction = InputSystem.actions.FindAction("UnRecruit");
         rb = GetComponent<Rigidbody2D>();
         tutorial = FindFirstObjectByType<Tutorial>();
 
@@ -35,6 +37,11 @@ public class PlayerController : MonoBehaviour
         {
             MovePlayer(moveVector, moveSpeed);
         }      
+
+        if (unRecruitAction.triggered)
+        {
+            UnRecruit();
+        }
     }
 
     public void MovePlayer(Vector2 moveVector, float moveSpeed)
@@ -46,6 +53,20 @@ public class PlayerController : MonoBehaviour
         else
         {
             rb.linearVelocity = Vector2.zero;
+        }
+    }
+
+    void UnRecruit()
+    {
+        LittleGuy[] littleGuys = FindObjectsByType<LittleGuy>(FindObjectsSortMode.None);
+
+        foreach (var littleGuy in littleGuys)
+        {
+            if (littleGuy.currentState == LittleGuy.State.FollowingPlayer)
+            {
+                littleGuy.currentState = LittleGuy.State.FarmingHome;
+                break;
+            }
         }
     }
 }

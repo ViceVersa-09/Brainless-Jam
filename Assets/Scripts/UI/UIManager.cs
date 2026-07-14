@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,15 +10,12 @@ public class UIManager : MonoBehaviour
     [Header("UI References")]
     public TextMeshProUGUI dayCountText;
     [SerializeField] float disappearTimeDayText;
-
-    //[Header("Menu")]
     public GameObject pauseScreen;
-
-    //[Header("GameObjects")]
     public GameObject summaryPrefab;
-
-    //[Header("Material")]
     public TextMeshProUGUI breadCountText;
+    [SerializeField] Slider healthbar;
+
+    PlayerController playerController;
 
     private void Awake()
     {
@@ -33,7 +31,14 @@ public class UIManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
+        playerController = FindFirstObjectByType<PlayerController>();
+        healthbar.maxValue = playerController.maxHealth;
         dayCountText.CrossFadeAlpha(0, disappearTimeDayText, true);
+    }
+
+    private void Update()
+    {
+        healthbar.value = playerController.currentHealth;
     }
 
     #region UI

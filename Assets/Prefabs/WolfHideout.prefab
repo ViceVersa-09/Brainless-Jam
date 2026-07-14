@@ -65,7 +65,7 @@ MonoBehaviour:
   what: 1
   health: 15
   damagePerGuy: 0.3
-  itemDrop: {fileID: 0}
+  itemDrop: {fileID: 1771462670051648778, guid: 12b07aeabff91334c94bfe4bd371fe17, type: 3}
   shakeMagnitude: 0.1
   shakeDuration: 0.2
   defaultSprite: {fileID: 3452003437791708593, guid: 870e06672a625d743897a083206f61a3, type: 3}

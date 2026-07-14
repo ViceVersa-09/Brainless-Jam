@@ -32,8 +32,7 @@ public class Interactable : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
     InputAction mineAction;
-    InputAction recruitAction;
-    InputAction unRecruitAction;
+    InputAction recruitAction;    
     PlayerController playerController;
 
     #region Unity Methods
@@ -43,8 +42,7 @@ public class Interactable : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerController = FindFirstObjectByType<PlayerController>();
         mineAction = InputSystem.actions.FindAction("Mine");
-        recruitAction = InputSystem.actions.FindAction("Interact");
-        unRecruitAction = InputSystem.actions.FindAction("UnRecruit");
+        recruitAction = InputSystem.actions.FindAction("Interact");     
     }
 
     private void Update()
@@ -193,18 +191,6 @@ public class Interactable : MonoBehaviour
             enabled = false;
             littleGuy.currentState = LittleGuy.State.FollowingPlayer;
             playerController.maxHealth += health;
-        }
-    }
-
-    public void UnRecruit()
-    {
-        if (unRecruitAction.triggered && what == What.LittleGuy)
-        {
-            LittleGuy littleGuy = GetComponent<LittleGuy>();
-
-            enabled = true;
-            littleGuy.currentState = LittleGuy.State.FarmingHome;
-            playerController.maxHealth -= health;
         }
     }
 }
