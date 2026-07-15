@@ -51,6 +51,7 @@ public class ResourceGenerator : MonoBehaviour
         currentWolfSpawnCount = 0;
 
         GameManager.instance.SpawnLittleGuys();
+        AudioManager.instance.PlaySFX(AudioManager.instance.dayStartClip);
     }
 
     void Spawn(ref int spawnCount, int spawnLimit, GameObject prefab, string invokeName)

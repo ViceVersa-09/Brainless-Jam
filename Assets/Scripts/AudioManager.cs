@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -15,18 +16,20 @@ public class AudioManager : MonoBehaviour
 
     [Header("SFX")]
     [SerializeField] AudioSource sFXSource;
-    [SerializeField] AudioClip buttonClip;
-    [SerializeField] AudioClip materialMineClip;
-    [SerializeField] AudioClip materialBreakClip;
-    [SerializeField] AudioClip walkClip;
-    [SerializeField] AudioClip swooshClip;
-    [SerializeField] AudioClip wolfDamageClip;
-    [SerializeField] AudioClip damageClip;
-    [SerializeField] AudioClip recruitClip;
-    [SerializeField] AudioClip unRecruitClip;
-    [SerializeField] AudioClip gatesClip;
-    [SerializeField] AudioClip dayStartClip;
-    [SerializeField] AudioClip summaryClip;
+    [SerializeField] public AudioClip buttonClip;
+    [SerializeField] public AudioClip materialMineClip;
+    [SerializeField] public AudioClip materialBreakClip;
+    [SerializeField] public AudioClip walkClip;
+    [SerializeField] public AudioClip swooshClip;
+    [SerializeField] public AudioClip wolfDamageClip;
+    [SerializeField] public AudioClip damageClip;
+    [SerializeField] public AudioClip recruitClip;
+    [SerializeField] public AudioClip unRecruitClip;
+    [SerializeField] public AudioClip gatesClip;
+    [SerializeField] public AudioClip dayStartClip;
+    [SerializeField] public AudioClip summaryClip;
+
+    bool playingWalk;
 
     private void Awake()
     {
@@ -65,6 +68,17 @@ public class AudioManager : MonoBehaviour
         {
             sFXSource.PlayOneShot(sFXClip);
         }        
+    }
+
+    public IEnumerator WalkLoop()
+    {
+        if (!playingWalk)
+        {
+            playingWalk = true;
+            PlaySFX(walkClip);
+            yield return new WaitForSeconds(walkClip.length);
+            playingWalk = false;
+        }
     }
 
     void UpdateVolume()

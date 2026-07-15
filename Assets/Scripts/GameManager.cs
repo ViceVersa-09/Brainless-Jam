@@ -34,8 +34,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        resourceManager = FindFirstObjectByType<ResourceManager>();
-
         if (instance == null)
         {
             instance = this;
@@ -53,15 +51,20 @@ public class GameManager : MonoBehaviour
     {
         pauseMenu = InputSystem.actions.FindAction("Pause");
 
-        if (resourceManager != null)
-        {
-            resourceManager.bread = startBread;
-        }      
-
         if (UIManager.instance != null)
         {
             UIManager.instance.DayTextUI($"Day: {currentDay}");
             UIManager.instance.BreadUI("Time until night: " + Day.TimeUntilNight);
+        }
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        resourceManager = FindFirstObjectByType<ResourceManager>();
+
+        if (resourceManager != null)
+        {
+            resourceManager.bread = startBread;
         }
     }
 

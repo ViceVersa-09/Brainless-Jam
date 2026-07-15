@@ -102,13 +102,15 @@ public class CameraController : MonoBehaviour
         shakeActive = false;
     }
 
-    void Transition(int level)
+    public IEnumerator Transition(int level)
     {
-        if (shakeActive) // temporary until i actually do the transition
-        {
+        Animator animator = GetComponentInChildren<Animator>();
+        animator.SetTrigger("Out");
+        AudioManager.instance.PlaySFX(AudioManager.instance.swooshClip);
 
-        }
-        else
+        yield return new WaitForSeconds(1);
+
+        if (SceneManager.sceneCountInBuildSettings >= level)
         {
             SceneManager.LoadScene(level);
         }

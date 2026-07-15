@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -78,6 +79,11 @@ public class PlayerController : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+
+        if (currentHealth <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     public void MovePlayer(Vector2 moveVector, float moveSpeed)
@@ -87,6 +93,7 @@ public class PlayerController : MonoBehaviour
             if (moveVector != Vector2.zero)
             {
                 LastMoveDirection = moveVector.normalized;
+                StartCoroutine(AudioManager.instance.WalkLoop());
             }
 
             rb.linearVelocity = moveVector * moveSpeed;
@@ -116,6 +123,7 @@ public class PlayerController : MonoBehaviour
             {
                 littleGuy.currentState = LittleGuy.State.FarmingHome;
                 littleGuy.GetComponent<Interactable>().EnableRecruiting();
+                AudioManager.instance.PlaySFX(AudioManager.instance.unRecruitClip);
                 break;
             }
         }

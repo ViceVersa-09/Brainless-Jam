@@ -46,8 +46,8 @@ public class Mission : MonoBehaviour
 
     public void UpdateMissionText()
     {
-        woodText.text = resourceManager.wood + "/" + woodMission;
-        stoneText.text = resourceManager.stone + "/" + stoneMission;
+        woodText.text = resourceManager.currentWood + "/" + woodMission;
+        stoneText.text = resourceManager.currentStone + "/" + stoneMission;
     }
 
     public void MissionButton()

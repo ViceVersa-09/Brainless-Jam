@@ -10,6 +10,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] GameObject parentObjectUI;
     [SerializeField] TextMeshProUGUI tutorialText;
     [SerializeField] float walkDistanceMarginal;
+    [SerializeField] TextMeshProUGUI tipText;
 
     [Header("One-Time use")]   
     [SerializeField] Vector3 target1;
@@ -18,6 +19,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] Vector2 wolfOffset;
 
     [Header("Texts")]
+    [SerializeField] string[] tipTexts;
     [SerializeField] string[] texts1;
     [SerializeField] string[] texts2;
     [SerializeField] string[] texts3;
@@ -44,6 +46,11 @@ public class Tutorial : MonoBehaviour
         StartCoroutine(FirstCutscene());
     }
 
+    private void Update()
+    {
+        tipText.gameObject.SetActive(!cutscene);
+    }
+
     void UpdateText(string text)
     {
         parentObjectUI.SetActive(true);
@@ -53,6 +60,7 @@ public class Tutorial : MonoBehaviour
     IEnumerator FirstCutscene()
     {
         cutscene = true;
+
         while (Vector2.Distance(target1, playerController.transform.position) > walkDistanceMarginal)
         {
             playerController.MovePlayer(target1 - playerController.transform.position, playerMoveSpeed);
@@ -65,10 +73,12 @@ public class Tutorial : MonoBehaviour
             UpdateText(text);
             yield return new WaitUntil(() => !textAction.triggered);
             yield return new WaitUntil(() => textAction.triggered);
+            AudioManager.instance.PlaySFX(AudioManager.instance.buttonClip);
         }
         
         parentObjectUI.SetActive(false);
         cutscene = false;
+        tipText.text = tipTexts[0];
         StartCoroutine(SecondCutscene());
     }
 
@@ -98,10 +108,12 @@ public class Tutorial : MonoBehaviour
             UpdateText(text);
             yield return new WaitUntil(() => !textAction.triggered);
             yield return new WaitUntil(() => textAction.triggered);
+            AudioManager.instance.PlaySFX(AudioManager.instance.buttonClip);
         }
 
         parentObjectUI.SetActive(false);
         cutscene = false;
+        tipText.text = tipTexts[1];
         StartCoroutine(ThirdCutscene());
     }
 
@@ -131,11 +143,13 @@ public class Tutorial : MonoBehaviour
             UpdateText(text);
             yield return new WaitUntil(() => !textAction.triggered);
             yield return new WaitUntil(() => textAction.triggered);
+            AudioManager.instance.PlaySFX(AudioManager.instance.buttonClip);
         }
 
         parentObjectUI.SetActive(false);
         cutscene = false;
         canOpenGates = true;
+        tipText.text = tipTexts[2];
         StartCoroutine(FourthCutscene());
     }
 
@@ -151,10 +165,12 @@ public class Tutorial : MonoBehaviour
             UpdateText(text);
             yield return new WaitUntil(() => !textAction.triggered);
             yield return new WaitUntil(() => textAction.triggered);
+            AudioManager.instance.PlaySFX(AudioManager.instance.buttonClip);
         }
 
         parentObjectUI.SetActive(false);
         cutscene = false;
+        tipText.text = tipTexts[3];
         StartCoroutine(FifthCutscene());
     }
 
@@ -163,7 +179,7 @@ public class Tutorial : MonoBehaviour
         ResourceManager resourceManager = FindFirstObjectByType<ResourceManager>();
         Mission mission = FindFirstObjectByType<Mission>();
 
-        yield return new WaitUntil(() => resourceManager.wood >= mission.woodMission && resourceManager.stone >= mission.stoneMission);
+        yield return new WaitUntil(() => resourceManager.currentWood >= mission.woodMission && resourceManager.currentStone >= mission.stoneMission);
 
         cutscene = true;
 
@@ -173,10 +189,12 @@ public class Tutorial : MonoBehaviour
             UpdateText(text);
             yield return new WaitUntil(() => !textAction.triggered);
             yield return new WaitUntil(() => textAction.triggered);
+            AudioManager.instance.PlaySFX(AudioManager.instance.buttonClip);
         }
 
         parentObjectUI.SetActive(false);
         cutscene = false;
+        tipText.text = tipTexts[4];
         StartCoroutine(SixthCutscene());
     }
 
@@ -192,12 +210,14 @@ public class Tutorial : MonoBehaviour
             UpdateText(text);
             yield return new WaitUntil(() => !textAction.triggered);
             yield return new WaitUntil(() => textAction.triggered);
+            AudioManager.instance.PlaySFX(AudioManager.instance.buttonClip);
         }
 
         wolf = Instantiate(wolfPrefab, (Vector2)playerController.transform.position + wolfOffset, Quaternion.identity);
 
         parentObjectUI.SetActive(false);
         cutscene = false;
+        tipText.text = tipTexts[5];
         StartCoroutine(SeventhCutscene());
     }
 
@@ -213,10 +233,12 @@ public class Tutorial : MonoBehaviour
             UpdateText(text);
             yield return new WaitUntil(() => !textAction.triggered);
             yield return new WaitUntil(() => textAction.triggered);
+            AudioManager.instance.PlaySFX(AudioManager.instance.buttonClip);
         }
 
         parentObjectUI.SetActive(false);
         cutscene = false;
+        tipText.text = tipTexts[6];
 
         ResourceManager resourceManager = FindFirstObjectByType<ResourceManager>();
         resourceManager.leftoverBread = 0;
