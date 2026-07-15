@@ -12,7 +12,7 @@ public class Pickup : MonoBehaviour
     [SerializeField] Vector2 guyOffset;
 
     LittleGuy[] littleGuys;
-    LittleGuy chosen;
+    [HideInInspector] public LittleGuy chosen;
 
     private void Start()
     {
@@ -27,7 +27,20 @@ public class Pickup : MonoBehaviour
             }
         }
 
-        chosen.currentState = LittleGuy.State.ReturningHome;
+        if (chosen == null)
+        {
+            foreach (var littleGuy in littleGuys)
+            {
+                chosen = littleGuy;
+                break;
+            }
+        }
+        
+        if (chosen != null)
+        {
+            chosen.currentState = LittleGuy.State.ReturningHome;
+            chosen.UpdatePickups();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -57,7 +70,7 @@ public class Pickup : MonoBehaviour
             if (littleGuy.currentState == LittleGuy.State.ReturningHome)
             {
                 transform.SetParent(chosen.transform);
-                transform.localPosition = (Vector2)chosen.transform.position + guyOffset;
+                transform.localPosition = guyOffset;
             }  
         }
     }

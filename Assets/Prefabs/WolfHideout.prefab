@@ -64,14 +64,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   what: 1
   health: 15
-  damagePerGuy: 1
+  damagePerGuy: 1.5
   itemDrop: {fileID: 1771462670051648778, guid: 12b07aeabff91334c94bfe4bd371fe17, type: 3}
   shakeMagnitude: 0.1
   shakeDuration: 0.2
+  noOutline: 0
   defaultSprite: {fileID: 5425630697925446170, guid: b1af4515d6010fa41ab1d0dabf1dd11a, type: 3}
   outlinedSprite: {fileID: -2757174241222951964, guid: da5b8d69a33025c4797e1996005f136e, type: 3}
   canInteract: 0
   canAttack: 1
+  spriteRenderer: {fileID: 0}
 --- !u!212 &9064620179344747932
 SpriteRenderer:
   serializedVersion: 2

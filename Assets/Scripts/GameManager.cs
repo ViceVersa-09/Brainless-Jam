@@ -22,10 +22,10 @@ public class GameManager : MonoBehaviour
 
     [Header("Day")]
     [SerializeField] float timePerTick = 10;
-    [SerializeField] int ticksPerDay = 24;
+    [SerializeField] public int ticksPerDay = 24;
 
     int currentDay;
-    int currentTick = 0;
+    [HideInInspector] public int currentTick = 0;
     float timeSinceDayStarted;
     [HideInInspector] public bool isDay = false;
 

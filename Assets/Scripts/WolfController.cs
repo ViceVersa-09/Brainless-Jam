@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class WolfController : MonoBehaviour
@@ -25,12 +24,16 @@ public class WolfController : MonoBehaviour
     PlayerController playerController;
     Coroutine attackRoutine;
     Interactable interactable;
+    Animator animator;
+    SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         interactable = GetComponent<Interactable>();
         playerController = FindFirstObjectByType<PlayerController>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -63,6 +66,34 @@ public class WolfController : MonoBehaviour
                 rb.linearVelocity = Vector2.zero;
             }
         }
+
+        if (rb.linearVelocityX != 0)
+        {
+            animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
+        }
+        else
+        {
+            animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.y));
+        }
+
+        if (rb.linearVelocityX < -0.2)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (rb.linearVelocityX > 0.2)
+        {
+            spriteRenderer.flipX = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        int playerLayer = LayerMask.NameToLayer("Player");
+
+        if (other.gameObject.layer == playerLayer && attackRoutine != null)
+        {
+            playerController.currentHealth -= damage;
+        }
     }
 
     void Hunt()
@@ -80,14 +111,16 @@ public class WolfController : MonoBehaviour
     IEnumerator Attack()
     {
         Vector3 originalPos = transform.position;
+        animator.SetBool("Attacking", true);
+        Vector3 playerPosition = playerController.transform.position;
 
-        while (Vector2.Distance(transform.position, playerController.transform.position) > dashDistance)
+        while (Vector2.Distance(transform.position, playerPosition) > dashDistance)
         {
-            rb.linearVelocity = dashSpeed * (playerController.transform.position - transform.position);
+            rb.linearVelocity = dashSpeed * (playerPosition - transform.position);
             yield return new WaitForEndOfFrame();
-        }      
+        }
 
-        playerController.currentHealth -= damage;
+        animator.SetBool("Attacking", false);
 
         while (originalPos - transform.position != Vector3.zero)
         {
@@ -95,8 +128,7 @@ public class WolfController : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        yield return new WaitForSeconds(attackSpeed);
-
+        yield return new WaitForSeconds(attackSpeed);      
         attackRoutine = null;
     }
 }

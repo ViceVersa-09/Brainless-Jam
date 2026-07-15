@@ -19,7 +19,7 @@ public class WolfHideout : MonoBehaviour
         {
             if (currentWolf == null)
             {
-                currentWolf = Instantiate(wolfPrefab, transform.position, Quaternion.identity);
+                currentWolf = Instantiate(wolfPrefab, transform.position - new Vector3(0, 1), Quaternion.identity);
 
                 yield return new WaitForSeconds(spawnCooldown);
             }

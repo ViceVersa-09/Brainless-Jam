@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     InputAction mineAction;
     GameManager gameManager;
+    Gates gates;
 
     // this will tell the little guys at which direction the player is heading at
     public Vector2 LastMoveDirection { get; private set; } = Vector2.down;
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         mineAction = InputSystem.actions.FindAction("Mine");
         gameManager = FindFirstObjectByType<GameManager>();
+        gates = FindFirstObjectByType<Gates>();
 
         currentHealth = maxHealth;
     }
@@ -70,6 +72,11 @@ public class PlayerController : MonoBehaviour
         if (mineAction.triggered && canControl)
         {
             animator.SetTrigger("Punch");
+        }
+
+        if (gates.canInteract && tutorial == null)
+        {
+            currentHealth = maxHealth;
         }
     }
 

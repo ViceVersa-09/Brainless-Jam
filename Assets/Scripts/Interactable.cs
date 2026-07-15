@@ -22,6 +22,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] GameObject itemDrop;
     [SerializeField] float shakeMagnitude;
     [SerializeField] float shakeDuration;
+    [SerializeField] bool noOutline;
 
     [Header("Sprites")]
     [SerializeField] public Sprite defaultSprite;
@@ -62,7 +63,10 @@ public class Interactable : MonoBehaviour
 
         if (playerController.interactingWith == this && canInteract)
         {
-            spriteRenderer.sprite = outlinedSprite;
+            if (!noOutline)
+            {
+                spriteRenderer.sprite = outlinedSprite;
+            }
         }
         else
         {
@@ -196,7 +200,7 @@ public class Interactable : MonoBehaviour
         playerController.canControl = true;
         if (itemDrop != null)
         {
-            Instantiate(itemDrop);
+            Instantiate(itemDrop, transform.position, Quaternion.identity);
         }
         Destroy(gameObject);
     }

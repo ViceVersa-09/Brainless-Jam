@@ -29,6 +29,9 @@ public class LittleGuy : MonoBehaviour
     FarmingNode[] farmingNodes;
     FarmingNode chosenNode;
     Interactable interactable;
+    Pickup[] pickups;
+    Pickup chosenPickup;
+    ResourceManager resourceManager;
 
     private void Awake()
     {
@@ -38,6 +41,7 @@ public class LittleGuy : MonoBehaviour
         littleGuyManager = FindFirstObjectByType<LittleGuyManager>();
         farmingNodes = FindObjectsByType<FarmingNode>(FindObjectsSortMode.None);
         interactable = GetComponent<Interactable>();
+        resourceManager = FindFirstObjectByType<ResourceManager>();
     }
 
     private void Start()
@@ -95,6 +99,26 @@ public class LittleGuy : MonoBehaviour
             chosenNode.occupant = null;
             chosenNode = null;
         }
+
+        if (currentState == State.ReturningHome)
+        {
+            col.radius = 0.5f;
+
+            if (chosenPickup != gameObject.GetComponentInChildren<Pickup>())
+            {
+                target = chosenPickup.transform.position;
+                transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+            }
+            else if (chosenPickup == gameObject.GetComponentInChildren<Pickup>())
+            {
+                target = resourceManager.transform.position;
+                transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+            }
+            else if (chosenPickup == null)
+            {
+                currentState = State.FarmingHome;
+            }
+        }
     }
 
     void CheckBehaviorChanged()
@@ -107,6 +131,20 @@ public class LittleGuy : MonoBehaviour
                 littleGuyManager.GiveLittleGuysIndex();
             }
             state = currentState;
+        }
+    }
+
+    public void UpdatePickups()
+    {
+        pickups = FindObjectsByType<Pickup>(FindObjectsSortMode.None);
+
+        foreach (var pickup in pickups)
+        {
+            if (pickup.chosen == this)
+            {
+                chosenPickup = pickup;
+                break;
+            }
         }
     }
 }

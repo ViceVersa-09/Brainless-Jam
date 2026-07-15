@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 7245096831377590048}
   - component: {fileID: 8454471630839775319}
   - component: {fileID: -2059228977211394693}
-  - component: {fileID: 8043523509844640141}
+  - component: {fileID: 2701694717655851147}
+  - component: {fileID: 8928322196880650791}
   m_Layer: 0
   m_Name: Wolf
   m_TagString: Untagged
@@ -72,14 +73,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   what: 3
   health: 12
-  damagePerGuy: 1
+  damagePerGuy: 1.5
   itemDrop: {fileID: 0}
   shakeMagnitude: 0.1
   shakeDuration: 0.2
-  defaultSprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  noOutline: 1
+  defaultSprite: {fileID: -5547194825390550217, guid: 583020af57f66184d8cf4e8a3f2578cd, type: 3}
   outlinedSprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   canInteract: 0
   canAttack: 1
+  spriteRenderer: {fileID: 0}
 --- !u!212 &7245096831377590048
 SpriteRenderer:
   serializedVersion: 2
@@ -127,9 +130,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1030420773
   m_SortingLayer: 2
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -5547194825390550217, guid: 583020af57f66184d8cf4e8a3f2578cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -202,8 +205,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &8043523509844640141
-CircleCollider2D:
+--- !u!95 &2701694717655851147
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5679632090492468569}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e5fcd53402776f94eb44e3c1c131860b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &8928322196880650791
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -236,5 +261,6 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0.004304538, y: 0.07581199}
+  m_Size: {x: 1.9053595, y: 1.1045741}
+  m_Direction: 1
