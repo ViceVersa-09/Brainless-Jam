@@ -918,6 +918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LittleGuyManager
   littleGuysPerRow: 3
   littleGuysSpacing: 1.5
+  centeredFormation: 1
 --- !u!4 &691816323
 Transform:
   m_ObjectHideFlags: 0
