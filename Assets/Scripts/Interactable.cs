@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -31,12 +32,12 @@ public class Interactable : MonoBehaviour
     
     bool canRecruit = true;
 
-    SpriteRenderer spriteRenderer;
+    [HideInInspector] public SpriteRenderer spriteRenderer;
     InputAction mineAction;
     InputAction recruitAction;
-    
     PlayerController playerController;
     LittleGuyManager littleGuyManager;
+    GameManager gameManager;
 
     #region Unity Methods
     private void Start()
@@ -46,6 +47,12 @@ public class Interactable : MonoBehaviour
         littleGuyManager = FindFirstObjectByType<LittleGuyManager>();
         mineAction = InputSystem.actions.FindAction("Mine");
         recruitAction = InputSystem.actions.FindAction("Interact");
+        gameManager = FindFirstObjectByType<GameManager>();
+
+        if (spriteRenderer == null)
+        {
+            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        }
     }
 
     private void Update()
@@ -78,7 +85,12 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        canInteract = false;
+        int playerLayer = LayerMask.NameToLayer("Player");
+
+        if (other.gameObject.layer == playerLayer)
+        {
+            canInteract = false;
+        }
     }
 
     #endregion
@@ -116,6 +128,8 @@ public class Interactable : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
+            Animator playerAnimator = playerController.GetComponent<Animator>();
+            playerAnimator.SetTrigger("Punch");
             Vector2 originalPos = transform.localPosition;
             float elapsed = 0f;
 
@@ -152,7 +166,7 @@ public class Interactable : MonoBehaviour
 
         health -= allGuysDamage + wolfController.playerDamage;
         Vector2 originalPos = transform.localPosition;
-        float elapsed = 0f;
+        float elapsed = 0f; 
 
         while (elapsed < shakeDuration)
         {
@@ -176,6 +190,8 @@ public class Interactable : MonoBehaviour
 
     void Break()
     {
+        Animator playerAnimator = playerController.GetComponent<Animator>();
+        playerAnimator.SetTrigger("Punch");
         canAttack = true;
         playerController.canControl = true;
         if (itemDrop != null)
@@ -187,7 +203,7 @@ public class Interactable : MonoBehaviour
 
     void CheckRecruitInput()
     {
-        if (recruitAction.triggered && canInteract && canRecruit && what == What.LittleGuy && playerController.interactingWith == this)
+        if (recruitAction.triggered && canInteract && !gameManager.isDay && canRecruit && what == What.LittleGuy && playerController.interactingWith == this)
         {
             LittleGuy littleGuy = GetComponent<LittleGuy>();
 

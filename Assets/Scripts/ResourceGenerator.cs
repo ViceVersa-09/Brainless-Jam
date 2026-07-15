@@ -49,6 +49,8 @@ public class ResourceGenerator : MonoBehaviour
         currentStoneSpawnCount = 0;
         currentStoneGroupSpawnCount = 0;
         currentWolfSpawnCount = 0;
+
+        GameManager.instance.SpawnLittleGuys();
     }
 
     void Spawn(ref int spawnCount, int spawnLimit, GameObject prefab, string invokeName)

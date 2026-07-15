@@ -30,10 +30,14 @@ public class Summary : MonoBehaviour
     ResourceManager resourceManager;
     GameManager gameManager;
     Vector2[] ogPositions;
+    Mission mission;
+    Tutorial tutorial;
 
     private void Start()
     {
         resourceManager = FindFirstObjectByType<ResourceManager>();
+        mission = FindFirstObjectByType<Mission>();
+        tutorial = FindFirstObjectByType<Tutorial>();
         gameManager = instance;
         Array.Resize(ref ogPositions, rects.Length);
 
@@ -42,6 +46,11 @@ public class Summary : MonoBehaviour
         Wood();
         Stone();
         resourceManager.EndOfDayMaterials();
+
+        if (resourceManager.wood >= mission.woodMission && resourceManager.stone >= mission.stoneMission && tutorial == null)
+        {
+            gameManager.littleGuys++;
+        }
     }
 
     void StartMovement()

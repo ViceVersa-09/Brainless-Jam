@@ -64,13 +64,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   what: 1
   health: 15
-  damagePerGuy: 0.3
+  damagePerGuy: 1
   itemDrop: {fileID: 1771462670051648778, guid: 12b07aeabff91334c94bfe4bd371fe17, type: 3}
   shakeMagnitude: 0.1
   shakeDuration: 0.2
-  defaultSprite: {fileID: 3452003437791708593, guid: 870e06672a625d743897a083206f61a3, type: 3}
-  outlinedSprite: {fileID: 1398216839, guid: 870e06672a625d743897a083206f61a3, type: 3}
+  defaultSprite: {fileID: 5425630697925446170, guid: b1af4515d6010fa41ab1d0dabf1dd11a, type: 3}
+  outlinedSprite: {fileID: -2757174241222951964, guid: da5b8d69a33025c4797e1996005f136e, type: 3}
   canInteract: 0
+  canAttack: 1
 --- !u!212 &9064620179344747932
 SpriteRenderer:
   serializedVersion: 2
@@ -120,7 +121,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 3452003437791708593, guid: 870e06672a625d743897a083206f61a3, type: 3}
+  m_Sprite: {fileID: 5425630697925446170, guid: b1af4515d6010fa41ab1d0dabf1dd11a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Values")]
     [SerializeField] public int startBread;
+    [SerializeField] public int littleGuys;
+    [SerializeField] GameObject littleGuyPrefab;
 
 
     [Header("Day")]
@@ -25,7 +27,7 @@ public class GameManager : MonoBehaviour
     int currentDay;
     int currentTick = 0;
     float timeSinceDayStarted;
-    bool isDay = false;
+    [HideInInspector] public bool isDay = false;
 
     InputAction pauseMenu;
     ResourceManager resourceManager;
@@ -51,7 +53,10 @@ public class GameManager : MonoBehaviour
     {
         pauseMenu = InputSystem.actions.FindAction("Pause");
 
-        resourceManager.bread = startBread;
+        if (resourceManager != null)
+        {
+            resourceManager.bread = startBread;
+        }      
 
         if (UIManager.instance != null)
         {
@@ -126,6 +131,14 @@ public class GameManager : MonoBehaviour
             {
                 littleGuy.tag = "Untagged";
             }
+        }
+    }
+
+    public void SpawnLittleGuys()
+    {
+        for (int i = 0; i < littleGuys; i++)
+        {
+            Instantiate(littleGuyPrefab, new Vector2(0, 5), Quaternion.identity);
         }
     }
 

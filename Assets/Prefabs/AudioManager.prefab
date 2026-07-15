@@ -180,10 +180,8 @@ MonoBehaviour:
   musicClip: {fileID: 8300000, guid: 7b95c1e00bdebd247a8dc9b28ae956c3, type: 3}
   sFXSource: {fileID: 9024109575845468470}
   buttonClip: {fileID: 8300000, guid: 36a203689fcbc5745964ae409f9dded6, type: 3}
-  woodMineClip: {fileID: 8300000, guid: 1a3e77c20ea0692468108416f8d7f148, type: 3}
-  stoneMineClip: {fileID: 8300000, guid: 960f3ef3e607e35419c6139e698be96a, type: 3}
-  woodBreakClip: {fileID: 8300000, guid: 257556130ae4538448176826236650ab, type: 3}
-  stoneBreakClip: {fileID: 8300000, guid: 155b56af64ab4cc41bb237ec0b5af80e, type: 3}
+  materialMineClip: {fileID: 8300000, guid: 960f3ef3e607e35419c6139e698be96a, type: 3}
+  materialBreakClip: {fileID: 8300000, guid: 155b56af64ab4cc41bb237ec0b5af80e, type: 3}
   walkClip: {fileID: 8300000, guid: 11add3dd3a7283c45bf6693510429dc1, type: 3}
   swooshClip: {fileID: 8300000, guid: 2293ad74c4a076e42a1160109c633542, type: 3}
   wolfDamageClip: {fileID: 8300000, guid: a3aa7b8b986170249945d9dfdaa0a58c, type: 3}

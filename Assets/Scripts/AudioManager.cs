@@ -16,10 +16,8 @@ public class AudioManager : MonoBehaviour
     [Header("SFX")]
     [SerializeField] AudioSource sFXSource;
     [SerializeField] AudioClip buttonClip;
-    [SerializeField] AudioClip woodMineClip;
-    [SerializeField] AudioClip stoneMineClip;
-    [SerializeField] AudioClip woodBreakClip;
-    [SerializeField] AudioClip stoneBreakClip;
+    [SerializeField] AudioClip materialMineClip;
+    [SerializeField] AudioClip materialBreakClip;
     [SerializeField] AudioClip walkClip;
     [SerializeField] AudioClip swooshClip;
     [SerializeField] AudioClip wolfDamageClip;

@@ -743,8 +743,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59dfd2f6115e03e4f88c29c74ba0d965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Mission
-  woodRange: {x: 1, y: 6}
-  stoneRange: {x: 1, y: 6}
+  woodRange: {x: 1, y: 2}
+  stoneRange: {x: 1, y: 2}
   woodText: {fileID: 5953701666251620995}
   stoneText: {fileID: 7803237682906738607}
   openButton: {fileID: 5883970597738637477}

@@ -17,6 +17,10 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Tutorial tutorial;
     InputAction unRecruitAction;
+    Animator animator;
+    SpriteRenderer spriteRenderer;
+    InputAction mineAction;
+    GameManager gameManager;
 
     // this will tell the little guys at which direction the player is heading at
     public Vector2 LastMoveDirection { get; private set; } = Vector2.down;
@@ -27,6 +31,10 @@ public class PlayerController : MonoBehaviour
         unRecruitAction = InputSystem.actions.FindAction("UnRecruit");
         rb = GetComponent<Rigidbody2D>();
         tutorial = FindFirstObjectByType<Tutorial>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        mineAction = InputSystem.actions.FindAction("Mine");
+        gameManager = FindFirstObjectByType<GameManager>();
 
         currentHealth = maxHealth;
     }
@@ -35,6 +43,15 @@ public class PlayerController : MonoBehaviour
     {
         // I'm doing it this way so that it'll be easier to make things like cutscenes
         moveVector = moveAction.ReadValue<Vector2>();
+
+        if (rb.linearVelocityX != 0)
+        {
+            animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
+        }
+        else
+        {
+            animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.y));
+        }
 
         if (tutorial == null || tutorial != null && !tutorial.cutscene)
         {
@@ -45,9 +62,14 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
         }
 
-        if (unRecruitAction.triggered)
+        if (unRecruitAction.triggered && !gameManager.isDay && canControl)
         {
             UnRecruit();
+        }
+
+        if (mineAction.triggered && canControl)
+        {
+            animator.SetTrigger("Punch");
         }
     }
 
@@ -61,6 +83,15 @@ public class PlayerController : MonoBehaviour
             }
 
             rb.linearVelocity = moveVector * moveSpeed;
+
+            if (rb.linearVelocityX < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if (rb.linearVelocityX > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
         }
         else
         {

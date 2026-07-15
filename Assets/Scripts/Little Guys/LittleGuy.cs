@@ -5,8 +5,6 @@ public class LittleGuy : MonoBehaviour
 {
     [Header("General")]
     [SerializeField] float moveSpeed;
-    [SerializeField] float bopDelay;
-    [SerializeField] float bopMagnitude;
 
     [Header("Following Player")]
     [SerializeField] float distance;
@@ -45,8 +43,6 @@ public class LittleGuy : MonoBehaviour
     private void Start()
     {
         state = currentState;
-
-        StartCoroutine(BopAnimation());
     }
 
     private void Update()
@@ -64,8 +60,9 @@ public class LittleGuy : MonoBehaviour
                 target = littleGuyManager.LittleGuysTarget[targetIndex];
             }
 
+            interactable.spriteRenderer.sprite = interactable.defaultSprite;
             interactable.enabled = false;
-            col.radius = 1;
+            col.radius = 0.5f;
             transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
         }
         else
@@ -110,17 +107,6 @@ public class LittleGuy : MonoBehaviour
                 littleGuyManager.GiveLittleGuysIndex();
             }
             state = currentState;
-        }
-    }
-
-    IEnumerator BopAnimation()
-    {
-        yield return new WaitForSeconds(Random.Range(0, bopDelay));
-
-        while (true)
-        {
-            transform.localPosition += new Vector3(0, bopMagnitude);
-            yield return new WaitForSeconds(bopDelay);
         }
     }
 }
