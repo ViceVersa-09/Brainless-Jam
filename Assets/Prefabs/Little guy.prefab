@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LittleGuy
   moveSpeed: 5
+  bopDelay: 2
+  bopMagnitude: 0.5
   distance: 2
   targetIndex: 0
   target: {x: 0, y: 0, z: 0}
@@ -71,9 +73,10 @@ MonoBehaviour:
   itemDrop: {fileID: 0}
   shakeMagnitude: 0
   shakeDuration: 0
-  defaultSprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  outlinedSprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  defaultSprite: {fileID: -4795321448397348380, guid: bbf44bf3ff79aca4cb7435ed931c6292, type: 3}
+  outlinedSprite: {fileID: -4795321448397348380, guid: bbf44bf3ff79aca4cb7435ed931c6292, type: 3}
   canInteract: 0
+  canAttack: 1
 --- !u!212 &6746548733285343895
 SpriteRenderer:
   serializedVersion: 2
@@ -119,11 +122,11 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1030420773
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -131,7 +134,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!58 &5050794089914476711
 CircleCollider2D:

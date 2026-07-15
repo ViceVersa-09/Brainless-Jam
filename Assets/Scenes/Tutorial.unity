@@ -186583,6 +186583,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6746548733285343895, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8938843968360947884, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
       propertyPath: m_Name
       value: Little guy

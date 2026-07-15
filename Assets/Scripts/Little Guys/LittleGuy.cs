@@ -1,9 +1,12 @@
+using System.Collections;
 using UnityEngine;
 
 public class LittleGuy : MonoBehaviour
 {
     [Header("General")]
     [SerializeField] float moveSpeed;
+    [SerializeField] float bopDelay;
+    [SerializeField] float bopMagnitude;
 
     [Header("Following Player")]
     [SerializeField] float distance;
@@ -36,12 +39,14 @@ public class LittleGuy : MonoBehaviour
         col = GetComponent<CircleCollider2D>();
         littleGuyManager = FindFirstObjectByType<LittleGuyManager>();
         farmingNodes = FindObjectsByType<FarmingNode>(FindObjectsSortMode.None);
+        interactable = GetComponent<Interactable>();
     }
 
     private void Start()
     {
         state = currentState;
-        interactable = GetComponent<Interactable>();
+
+        StartCoroutine(BopAnimation());
     }
 
     private void Update()
@@ -105,6 +110,17 @@ public class LittleGuy : MonoBehaviour
                 littleGuyManager.GiveLittleGuysIndex();
             }
             state = currentState;
+        }
+    }
+
+    IEnumerator BopAnimation()
+    {
+        yield return new WaitForSeconds(Random.Range(0, bopDelay));
+
+        while (true)
+        {
+            transform.localPosition += new Vector3(0, bopMagnitude);
+            yield return new WaitForSeconds(bopDelay);
         }
     }
 }
