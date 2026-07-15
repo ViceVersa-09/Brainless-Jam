@@ -61,13 +61,17 @@ public class UIManager : MonoBehaviour
     {
         if (pauseScreen != null)
             pauseScreen.SetActive(value);
+
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClip);
     }
 
     public void MainMenu()
     {
         Time.timeScale = 1;
         pauseScreen.SetActive(false);
-        SceneManager.LoadSceneAsync(0);
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClip);
+        CameraController cameraController = Camera.main.GetComponent<CameraController>();
+        StartCoroutine(cameraController.Transition(2));
     }
     #endregion
     #region GameObjects

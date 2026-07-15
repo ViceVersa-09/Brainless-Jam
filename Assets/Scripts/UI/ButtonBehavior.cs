@@ -41,10 +41,13 @@ public class ButtonBehavior : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadSceneAsync(1);
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClip);
+        CameraController cameraController = Camera.main.GetComponent<CameraController>();
+        StartCoroutine(cameraController.Transition(1));
     }
     public void Options(bool value)
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClip);
         optionsMenu.SetActive(value);
         startMenu.SetActive(!value);
     }

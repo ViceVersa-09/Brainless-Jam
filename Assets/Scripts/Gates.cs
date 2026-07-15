@@ -53,6 +53,7 @@ public class Gates : MonoBehaviour
 
     void OpenGates()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.gatesClip);
         gameManager.StartGame();
         //gameObject.SetActive(false);
         animator.SetInteger("State", 1);

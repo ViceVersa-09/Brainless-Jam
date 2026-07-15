@@ -120,6 +120,7 @@ public class WolfController : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
+        AudioManager.instance.PlaySFX(AudioManager.instance.damageClip);
         animator.SetBool("Attacking", false);
 
         while (originalPos - transform.position != Vector3.zero)

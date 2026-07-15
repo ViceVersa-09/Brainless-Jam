@@ -134,6 +134,7 @@ public class Interactable : MonoBehaviour
         {
             Animator playerAnimator = playerController.GetComponent<Animator>();
             playerAnimator.SetTrigger("Punch");
+            AudioManager.instance.PlaySFX(AudioManager.instance.materialMineClip);
             Vector2 originalPos = transform.localPosition;
             float elapsed = 0f;
 
@@ -170,7 +171,8 @@ public class Interactable : MonoBehaviour
 
         health -= allGuysDamage + wolfController.playerDamage;
         Vector2 originalPos = transform.localPosition;
-        float elapsed = 0f; 
+        float elapsed = 0f;
+        AudioManager.instance.PlaySFX(AudioManager.instance.wolfDamageClip);
 
         while (elapsed < shakeDuration)
         {
@@ -196,6 +198,7 @@ public class Interactable : MonoBehaviour
     {
         Animator playerAnimator = playerController.GetComponent<Animator>();
         playerAnimator.SetTrigger("Punch");
+        AudioManager.instance.PlaySFX(AudioManager.instance.materialBreakClip);
         canAttack = true;
         playerController.canControl = true;
         if (itemDrop != null)
@@ -209,6 +212,8 @@ public class Interactable : MonoBehaviour
     {
         if (recruitAction.triggered && canInteract && !gameManager.isDay && canRecruit && what == What.LittleGuy && playerController.interactingWith == this)
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.recruitClip);
+
             LittleGuy littleGuy = GetComponent<LittleGuy>();
 
             canRecruit = false;

@@ -46,8 +46,9 @@ public class Summary : MonoBehaviour
         Wood();
         Stone();
         resourceManager.EndOfDayMaterials();
+        AudioManager.instance.PlaySFX(AudioManager.instance.summaryClip);
 
-        if (resourceManager.wood >= mission.woodMission && resourceManager.stone >= mission.stoneMission && tutorial == null)
+        if (resourceManager.currentWood >= mission.woodMission && resourceManager.currentStone >= mission.stoneMission && tutorial == null)
         {
             gameManager.littleGuys++;
         }
@@ -82,10 +83,14 @@ public class Summary : MonoBehaviour
     public void MoveAway()
     {
         StopAllCoroutines();
+
         foreach (var rect in rects)
         { 
             StartCoroutine(RectMovement(rect, new Vector2(awayPosition.x, rect.anchoredPosition.y)));
         }
+
+        CameraController cameraController = Camera.main.GetComponent<CameraController>();
+        StartCoroutine(cameraController.Transition(2));
     }
 
     void Bread()

@@ -104,7 +104,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 440e5cdd9d6050340b44b4364502f946, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -185,10 +185,12 @@ MonoBehaviour:
   itemDrop: {fileID: 0}
   shakeMagnitude: 0
   shakeDuration: 0
+  noOutline: 0
   defaultSprite: {fileID: 1106948384306575284, guid: e28edd1a3390d2d489a677754b9e09b7, type: 3}
   outlinedSprite: {fileID: -3566414059654559137, guid: 82737ad58d9ed474cb5718ff7291b5d9, type: 3}
   canInteract: 0
   canAttack: 1
+  spriteRenderer: {fileID: 0}
 --- !u!58 &5050794089914476711
 CircleCollider2D:
   m_ObjectHideFlags: 0

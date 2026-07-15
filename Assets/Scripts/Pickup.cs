@@ -51,11 +51,11 @@ public class Pickup : MonoBehaviour
 
             if (material == WhatMaterial.Wood)
             {
-                resourceManager.wood++;
+                resourceManager.currentWood++;
             }
             else if (material == WhatMaterial.Stone)
             {
-                resourceManager.stone++;
+                resourceManager.currentStone++;
             }
 
             Mission mission = FindFirstObjectByType<Mission>();
