@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class LittleGuy : MonoBehaviour
@@ -52,6 +51,10 @@ public class LittleGuy : MonoBehaviour
     private void Update()
     {
         CheckBehaviorChanged();
+    }
+
+    private void FixedUpdate()
+    {
         Behaviour();
     }
 
@@ -67,7 +70,7 @@ public class LittleGuy : MonoBehaviour
             interactable.spriteRenderer.sprite = interactable.defaultSprite;
             interactable.enabled = false;
             col.radius = 0.5f;
-            transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+            rb.MovePosition(Vector2.MoveTowards(rb.position, target, moveSpeed * Time.deltaTime));
         }
         else
         {
@@ -92,7 +95,7 @@ public class LittleGuy : MonoBehaviour
                 }
             }
 
-            transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+            rb.MovePosition(Vector2.MoveTowards(rb.position, target, moveSpeed * Time.deltaTime));
         }
         else if (chosenNode != null)
         {
@@ -107,12 +110,12 @@ public class LittleGuy : MonoBehaviour
             if (chosenPickup != gameObject.GetComponentInChildren<Pickup>())
             {
                 target = chosenPickup.transform.position;
-                transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+                rb.MovePosition(Vector2.MoveTowards(rb.position, target, moveSpeed * Time.deltaTime));
             }
             else if (chosenPickup == gameObject.GetComponentInChildren<Pickup>())
             {
                 target = resourceManager.transform.position;
-                transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+                rb.MovePosition(Vector2.MoveTowards(rb.position, target, moveSpeed * Time.deltaTime));
             }
             else if (chosenPickup == null)
             {

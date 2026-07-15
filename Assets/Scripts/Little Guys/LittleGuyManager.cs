@@ -4,6 +4,7 @@ public class LittleGuyManager : MonoBehaviour
 {
     [SerializeField] int littleGuysPerRow = 5;
     [SerializeField] float littleGuysSpacing = 2f;
+    [SerializeField] bool centeredFormation = false;
 
     public Vector3[] LittleGuysTarget { get { return littleGuysTarget; } }
 
@@ -57,6 +58,7 @@ public class LittleGuyManager : MonoBehaviour
         Vector2 behind = -forward;
         Vector2 right = new Vector2(forward.y, -forward.x);
 
+        int totalFollowers = littleGuysFollowingPlayer;
         littleGuysFollowingPlayer = 0;
 
         for (int i = 0; i < littleGuys.Length; i++)
@@ -66,9 +68,22 @@ public class LittleGuyManager : MonoBehaviour
                 int row = littleGuysFollowingPlayer / littleGuysPerRow;
                 int column = littleGuysFollowingPlayer % littleGuysPerRow;
 
-                float width = (littleGuysPerRow - 1) * 0.5f;
+                float offset;
 
-                Vector2 sideways = (column - width) * littleGuysSpacing * right;
+                int guysInThisRow = Mathf.Min(littleGuysPerRow, totalFollowers - row * littleGuysPerRow);
+
+                bool isLastRow = row == (totalFollowers - 1) / littleGuysPerRow;
+
+                if (centeredFormation && isLastRow)
+                {
+                    offset = column - (guysInThisRow - 1) * 0.5f;
+                }
+                else
+                {
+                    offset = column - (littleGuysPerRow - 1) * 0.5f;
+                }
+
+                Vector2 sideways = offset * littleGuysSpacing * right;
                 Vector2 backwards = (row + 1) * littleGuysSpacing * behind;
 
                 littleGuysTarget[littleGuysFollowingPlayer] = player.transform.position + (Vector3)(sideways + backwards);

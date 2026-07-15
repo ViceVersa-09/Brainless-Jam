@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 696250515929767166}
   - component: {fileID: 8631052525804240350}
   - component: {fileID: 5050794089914476711}
+  - component: {fileID: -2122553599412006400}
   - component: {fileID: 3743979490558743665}
   m_Layer: 6
   m_Name: Little guy
@@ -185,10 +186,12 @@ MonoBehaviour:
   itemDrop: {fileID: 0}
   shakeMagnitude: 0
   shakeDuration: 0
+  noOutline: 0
   defaultSprite: {fileID: 1106948384306575284, guid: e28edd1a3390d2d489a677754b9e09b7, type: 3}
   outlinedSprite: {fileID: -3566414059654559137, guid: 82737ad58d9ed474cb5718ff7291b5d9, type: 3}
   canInteract: 0
   canAttack: 1
+  spriteRenderer: {fileID: 0}
 --- !u!58 &5050794089914476711
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -223,8 +226,44 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 2
+  m_Offset: {x: 0, y: -0.5}
+  m_Radius: 0.6
+--- !u!58 &-2122553599412006400
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8938843968360947884}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.5}
+  m_Radius: 0.6
 --- !u!50 &3743979490558743665
 Rigidbody2D:
   serializedVersion: 5
@@ -248,7 +287,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
