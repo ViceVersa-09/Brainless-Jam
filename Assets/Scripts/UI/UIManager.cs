@@ -71,7 +71,7 @@ public class UIManager : MonoBehaviour
         pauseScreen.SetActive(false);
         AudioManager.instance.PlaySFX(AudioManager.instance.buttonClip);
         CameraController cameraController = Camera.main.GetComponent<CameraController>();
-        StartCoroutine(cameraController.Transition(2));
+        StartCoroutine(cameraController.Transition(0));
     }
     #endregion
     #region GameObjects
