@@ -109,21 +109,29 @@ public class GameManager : MonoBehaviour
 
     IEnumerator DayTimer()
     {
-        currentTick = 0;
-        timeSinceDayStarted = 0;
-        for (int i = 0; i < ticksPerDay; i++)
+        Tutorial tutorial = FindFirstObjectByType<Tutorial>();
+
+        yield return new WaitForEndOfFrame();
+
+        if (tutorial == null)
         {
-            yield return new WaitForSeconds(timePerTick);
-            currentTick++;
-        }
-        isDay = false;
-        timeSinceDayStarted = 0;
-        EndGame();
+            currentTick = 0;
+            timeSinceDayStarted = 0;
+            for (int i = 0; i < ticksPerDay; i++)
+            {
+                yield return new WaitForSeconds(timePerTick);
+                currentTick++;
+            }
+            isDay = false;
+            timeSinceDayStarted = 0;
+            EndGame();
+        } 
     }
 
     public void StartGame()
     {
         isDay = true;
+
         StartCoroutine(DayTimer());
 
         LittleGuy[] everyLittleGuy = FindObjectsByType<LittleGuy>(FindObjectsSortMode.None);

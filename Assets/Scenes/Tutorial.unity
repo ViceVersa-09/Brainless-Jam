@@ -1043,14 +1043,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TerrainGenerator
   treeDelay: 0.001
-  treeGroupDelay: 0.1
   stoneDelay: 0.001
-  stoneGroupDelay: 0.1
   wolfDelay: 0.001
   treeSpawnLimit: 50
-  treeGroupSpawnLimit: 20
   stoneSpawnLimit: 50
-  stoneGroupSpawnLimit: 20
   wolfSpawnLimit: 0
   startDelay: 0.1
   spawnCheckRadius: 0.5
@@ -1059,9 +1055,7 @@ MonoBehaviour:
   baseMin: {x: -32, y: -16}
   baseMax: {x: 8, y: 17}
   treePrefab: {fileID: 3087412326369962372, guid: 9384941669ed3fc4aaf56d7e14e24693, type: 3}
-  treeGroupPrefab: {fileID: 0}
   stonePrefab: {fileID: 582281032393867414, guid: fa57843b744de0c4dbe4115a341b0cc3, type: 3}
-  stoneGroupPrefab: {fileID: 0}
   wolfPrefab: {fileID: 7675477719711234353, guid: 17d45ab64aa9a834eba5a26f3412ed26, type: 3}
 --- !u!4 &832914285
 Transform:
@@ -6231,7 +6225,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1214643521
 RectTransform:

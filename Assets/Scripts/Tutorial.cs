@@ -49,6 +49,11 @@ public class Tutorial : MonoBehaviour
     private void Update()
     {
         tipText.gameObject.SetActive(!cutscene);
+
+        if (playerController == null)
+        {
+            playerController = FindFirstObjectByType<PlayerController>();
+        }
     }
 
     void UpdateText(string text)
@@ -59,11 +64,14 @@ public class Tutorial : MonoBehaviour
 
     IEnumerator FirstCutscene()
     {
+        yield return new WaitUntil(() => playerController != null);
+
         cutscene = true;
 
         while (Vector2.Distance(target1, playerController.transform.position) > walkDistanceMarginal)
         {
-            playerController.MovePlayer(target1 - playerController.transform.position, playerMoveSpeed);
+            Debug.Log("Moving");
+            playerController.MovePlayer((Vector2)target1 - (Vector2)playerController.transform.position, playerMoveSpeed);
             yield return new WaitForEndOfFrame();
         }
         

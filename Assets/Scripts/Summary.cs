@@ -107,7 +107,7 @@ public class Summary : MonoBehaviour
 
     void Stone()
     {
-        woodText.text = resourceManager.stone.ToString();
-        woodGainedText.text = "+" + resourceManager.currentStone;
+        stoneText.text = resourceManager.stone.ToString();
+        stoneGainedText.text = "+" + resourceManager.currentStone;
     }
 }

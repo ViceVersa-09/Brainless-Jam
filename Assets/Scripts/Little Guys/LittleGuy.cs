@@ -88,13 +88,13 @@ public class LittleGuy : MonoBehaviour
                     if (node.occupant == null)
                     {
                         node.occupant = this;
-                        target = node.transform.position;
                         chosenNode = node;
                         break;
                     }
                 }
             }
 
+            target = chosenNode.transform.position;
             rb.MovePosition(Vector2.MoveTowards(rb.position, target, moveSpeed * Time.deltaTime));
         }
         else if (chosenNode != null)

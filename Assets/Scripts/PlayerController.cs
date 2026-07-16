@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
         gates = FindFirstObjectByType<Gates>();
 
         currentHealth = maxHealth;
+        Debug.Log("Hi");
     }
 
     private void Update()
