@@ -15,8 +15,8 @@ public class UIManager : MonoBehaviour
     public GameObject summaryPrefab;
     public TextMeshProUGUI breadCountText;
     [SerializeField] Slider healthbar;
-
     PlayerController playerController;
+    public Animator animator;
 
     private void Awake()
     {
@@ -34,12 +34,18 @@ public class UIManager : MonoBehaviour
 
         playerController = FindFirstObjectByType<PlayerController>();
         healthbar.maxValue = playerController.maxHealth;
-        dayCountText.CrossFadeAlpha(0, disappearTimeDayText, true);
+        animator = dayCountText.GetComponent<Animator>();
     }
 
     private void Update()
     {
+        healthbar.maxValue = playerController.maxHealth;
         healthbar.value = playerController.currentHealth;
+
+        if (playerController == null)
+        {
+            playerController = FindFirstObjectByType<PlayerController>();
+        }
     }
 
     #region UI

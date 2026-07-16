@@ -1,3 +1,5 @@
+using System.Reflection;
+using System.Resources;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,28 +12,27 @@ public class ResourceManager : MonoBehaviour
     [HideInInspector] public int currentWood;
     [HideInInspector] public int currentStone;
     [HideInInspector] public int currentBread;
-    [HideInInspector] public int leftoverBread;
-
-    [HideInInspector] public int wood;
-    [HideInInspector] public int stone;
-    [HideInInspector] public int bread;
 
     InputAction inputAction;
     PlayerController playerController;
     Tutorial tutorial;
+    Mission mission;
 
     private void Start()
     {
         inputAction = InputSystem.actions.FindAction("Text");
         playerController = FindFirstObjectByType<PlayerController>();
         tutorial = FindFirstObjectByType<Tutorial>();
+        mission = FindFirstObjectByType<Mission>();
+
+        UIManager.instance.animator.SetTrigger("Fade");
     }
 
     private void Update()
     {
         if (inputAction.triggered && skipText.gameObject.activeInHierarchy)
         {
-            GameManager.instance.currentTick = GameManager.instance.ticksPerDay;
+            GameManager.instance.currentTick = GameManager.instance.ticksPerDay - 1;
         }
 
         if (skipText.gameObject.activeInHierarchy)
@@ -72,15 +73,21 @@ public class ResourceManager : MonoBehaviour
 
     public void EndOfDayMaterials()
     {
-        leftoverBread = bread;
+        if (currentWood >= mission.woodMission && currentStone >= mission.stoneMission && tutorial == null)
+        {
+            Debug.Log("One more guy");
+            GameManager.instance.littleGuysSpawnAmount++;
+        }
 
-        wood += currentWood;
+        GameManager.instance.leftoverBread = GameManager.instance.bread;
+
+        GameManager.instance.wood += currentWood;
         currentWood = 0;
 
-        stone += currentStone;
+        GameManager.instance.stone += currentStone;
         currentStone = 0;
 
-        bread += currentBread;
+        GameManager.instance.bread += currentBread;
         currentBread = 0;
     }
 }

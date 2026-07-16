@@ -28,17 +28,11 @@ public class Summary : MonoBehaviour
     [SerializeField] TextMeshProUGUI stoneGainedText;
 
     ResourceManager resourceManager;
-    GameManager gameManager;
     Vector2[] ogPositions;
-    Mission mission;
-    Tutorial tutorial;
 
     private void Start()
     {
         resourceManager = FindFirstObjectByType<ResourceManager>();
-        mission = FindFirstObjectByType<Mission>();
-        tutorial = FindFirstObjectByType<Tutorial>();
-        gameManager = instance;
         Array.Resize(ref ogPositions, rects.Length);
 
         StartMovement();
@@ -47,11 +41,6 @@ public class Summary : MonoBehaviour
         Stone();
         resourceManager.EndOfDayMaterials();
         AudioManager.instance.PlaySFX(AudioManager.instance.summaryClip);
-
-        if (resourceManager.currentWood >= mission.woodMission && resourceManager.currentStone >= mission.stoneMission && tutorial == null)
-        {
-            gameManager.littleGuys++;
-        }
     }
 
     void StartMovement()
@@ -95,19 +84,19 @@ public class Summary : MonoBehaviour
 
     void Bread()
     {
-        breadText.text = resourceManager.bread + " Bread Baked";
-        leftoverText.text = "+" + resourceManager.leftoverBread + " leftover";
+        breadText.text = resourceManager.currentBread + " Bread Baked";
+        leftoverText.text = "+" + GameManager.instance.leftoverBread + " leftover";
     }
 
     void Wood()
     {
-        woodText.text = resourceManager.wood.ToString();
+        woodText.text = GameManager.instance.wood.ToString();
         woodGainedText.text = "+" + resourceManager.currentWood;
     }
 
     void Stone()
     {
-        stoneText.text = resourceManager.stone.ToString();
+        stoneText.text = GameManager.instance.stone.ToString();
         stoneGainedText.text = "+" + resourceManager.currentStone;
     }
 }

@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections;
 using TMPro;
 using UnityEngine.InputSystem;
-using Unity.VisualScripting;
 
 public class Tutorial : MonoBehaviour
 {
@@ -249,7 +248,7 @@ public class Tutorial : MonoBehaviour
         tipText.text = tipTexts[6];
 
         ResourceManager resourceManager = FindFirstObjectByType<ResourceManager>();
-        resourceManager.leftoverBread = 0;
+        GameManager.instance.leftoverBread = 0;
         GameManager.instance.EndGame();
         resourceManager.currentBread = GameManager.instance.startBread;
     }

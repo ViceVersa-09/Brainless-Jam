@@ -76,14 +76,15 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Punch");
         }
 
-        if (gates.canInteract && tutorial == null)
+        if (gates.canInteract && tutorial == null || !GameManager.instance.isDay)
         {
             currentHealth = maxHealth;
         }
 
         if (currentHealth <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            CameraController cameraController = Camera.main.GetComponent<CameraController>();
+            cameraController.Transition(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
@@ -125,6 +126,7 @@ public class PlayerController : MonoBehaviour
                 littleGuy.currentState = LittleGuy.State.FarmingHome;
                 littleGuy.GetComponent<Interactable>().EnableRecruiting();
                 AudioManager.instance.PlaySFX(AudioManager.instance.unRecruitClip);
+                GameManager.instance.bread++;
                 break;
             }
         }

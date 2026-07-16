@@ -31,8 +31,11 @@ public class Pickup : MonoBehaviour
         {
             foreach (var littleGuy in littleGuys)
             {
-                chosen = littleGuy;
-                break;
+                if (littleGuy.chosenPickup == null)
+                {
+                    chosen = littleGuy;
+                    break;
+                }
             }
         }
         
@@ -41,23 +44,23 @@ public class Pickup : MonoBehaviour
             chosen.currentState = LittleGuy.State.ReturningHome;
             chosen.UpdatePickups();
         }
+
+        ResourceManager resourceManager = FindFirstObjectByType<ResourceManager>();
+
+        if (material == WhatMaterial.Wood)
+        {
+            resourceManager.currentWood++;
+        }
+        else if (material == WhatMaterial.Stone)
+        {
+            resourceManager.currentStone++;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Barn"))
         {
-            ResourceManager resourceManager = other.GetComponent<ResourceManager>();
-
-            if (material == WhatMaterial.Wood)
-            {
-                resourceManager.currentWood++;
-            }
-            else if (material == WhatMaterial.Stone)
-            {
-                resourceManager.currentStone++;
-            }
-
             Mission mission = FindFirstObjectByType<Mission>();
             mission.UpdateMissionText();
             chosen.currentState = LittleGuy.State.FarmingHome;

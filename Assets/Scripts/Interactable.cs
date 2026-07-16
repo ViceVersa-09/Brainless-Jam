@@ -210,12 +210,12 @@ public class Interactable : MonoBehaviour
 
     void CheckRecruitInput()
     {
-        if (recruitAction.triggered && canInteract && !gameManager.isDay && canRecruit && what == What.LittleGuy && playerController.interactingWith == this)
+        if (recruitAction.triggered && canInteract && !gameManager.isDay && canRecruit && what == What.LittleGuy && playerController.interactingWith == this && gameManager.bread > 0)
         {
             AudioManager.instance.PlaySFX(AudioManager.instance.recruitClip);
 
             LittleGuy littleGuy = GetComponent<LittleGuy>();
-
+            GameManager.instance.bread--;
             canRecruit = false;
 
             littleGuy.currentState = LittleGuy.State.FollowingPlayer;

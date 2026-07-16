@@ -617,7 +617,7 @@ MonoBehaviour:
   startBread: 9
   littleGuys: 7
   littleGuyPrefab: {fileID: 8938843968360947884, guid: fe7ac1b33e4d4c24ab2a53e120ce96a1, type: 3}
-  timePerTick: 100
+  timePerTick: 10
   ticksPerDay: 24
   currentTick: 0
   isDay: 0
@@ -187001,10 +187001,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2026499082461004378, guid: dd9769751e311c3478b6b72ef79c6d7e, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2553902773039779249, guid: dd9769751e311c3478b6b72ef79c6d7e, type: 3}
       propertyPath: m_Name
       value: AudioManager

@@ -40,8 +40,8 @@ public class Mission : MonoBehaviour
 
     public void NewMission()
     {
-        woodMission = Random.Range((int)woodRange.x, (int)woodRange.y);
-        stoneMission = Random.Range((int)stoneRange.x, (int)stoneRange.y);
+        woodMission = Random.Range((int)woodRange.x, (int)woodRange.y + GameManager.instance.missionMaxAdder);
+        stoneMission = Random.Range((int)stoneRange.x, (int)stoneRange.y + GameManager.instance.missionMaxAdder);
     }
 
     public void UpdateMissionText()

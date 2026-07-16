@@ -26,7 +26,7 @@ public class BreadProduction : MonoBehaviour
         else
         {
             produceBread ??= StartCoroutine(ProduceBread());
-            resourceManager.bread += breadProduced;
+            //GameManager.instance.bread += breadProduced;
             breadProduced = 0;
         }
     }
@@ -37,7 +37,7 @@ public class BreadProduction : MonoBehaviour
         {
             yield return new WaitForSeconds(breadProductionSpeed);
             breadProduced += breadQuantity * manPower;
-            Debug.Log(resourceManager.bread);
+            Debug.Log(GameManager.instance.bread);
         }
     }
 

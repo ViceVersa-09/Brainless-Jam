@@ -107,6 +107,9 @@ public class CameraController : MonoBehaviour
         Animator animator = GetComponentInChildren<Animator>();
         animator.SetTrigger("Out");
         AudioManager.instance.PlaySFX(AudioManager.instance.swooshClip);
+        GameManager.instance.isDay = false;
+        GameManager.instance.currentTick = 0;
+        GameManager.instance.timeSinceDayStarted = 0;
 
         yield return new WaitForSeconds(1);
 

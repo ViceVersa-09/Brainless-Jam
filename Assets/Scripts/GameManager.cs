@@ -24,9 +24,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] float timePerTick = 10;
     [SerializeField] public int ticksPerDay = 24;
 
+    [HideInInspector] public int wood;
+    [HideInInspector] public int stone;
+    [HideInInspector] public int bread;
+    [HideInInspector] public int leftoverBread;
     int currentDay;
+    public int missionMaxAdder;
+    [HideInInspector] public int littleGuysSpawnAmount;
     [HideInInspector] public int currentTick = 0;
-    float timeSinceDayStarted;
+    [HideInInspector] public float timeSinceDayStarted;
     [HideInInspector] public bool isDay = false;
 
     InputAction pauseMenu;
@@ -51,6 +57,8 @@ public class GameManager : MonoBehaviour
     {
         pauseMenu = InputSystem.actions.FindAction("Pause");
 
+        littleGuysSpawnAmount = littleGuys;
+
         if (UIManager.instance != null)
         {
             UIManager.instance.DayTextUI($"Day: {currentDay}");
@@ -62,16 +70,30 @@ public class GameManager : MonoBehaviour
     {
         resourceManager = FindFirstObjectByType<ResourceManager>();
 
-        if (resourceManager != null)
+        if (currentDay < 1)
         {
-            resourceManager.bread = startBread;
+            bread = startBread;
         }
+
+        if (UIManager.instance != null)
+        {
+            UIManager.instance.DayTextUI($"Day: {currentDay}");
+            UIManager.instance.BreadUI("Time until night: " + Day.TimeUntilNight);
+        }
+
+        bread += leftoverBread;
+        leftoverBread = 0;
     }
 
     private void Update()
     {
         Menu();
         BreadUI();
+
+        if (resourceManager == null)
+        {
+            resourceManager = FindFirstObjectByType<ResourceManager>();
+        }
     }
     #region Menu
     private void Menu()
@@ -103,35 +125,29 @@ public class GameManager : MonoBehaviour
 
         if (UIManager.instance != null)
         {
+            UIManager.instance.DayTextUI($"Day: {currentDay}");
             UIManager.instance.BreadUI("Time until night: " + FloatToIntRoundedUp(Day.TimeUntilNight));
         }
     }
 
     IEnumerator DayTimer()
     {
-        Tutorial tutorial = FindFirstObjectByType<Tutorial>();
-
-        yield return new WaitForEndOfFrame();
-
-        if (tutorial == null)
+        currentTick = 0;
+        timeSinceDayStarted = 0;
+        for (int i = 0; i < ticksPerDay; i = currentTick)
         {
-            currentTick = 0;
-            timeSinceDayStarted = 0;
-            for (int i = 0; i < ticksPerDay; i++)
-            {
-                yield return new WaitForSeconds(timePerTick);
-                currentTick++;
-            }
-            isDay = false;
-            timeSinceDayStarted = 0;
-            EndGame();
-        } 
+            yield return new WaitForSeconds(timePerTick);
+            currentTick++;
+        }
+        isDay = false;
+        timeSinceDayStarted = 0;
+        EndGame();
     }
 
     public void StartGame()
     {
         isDay = true;
-
+        resourceManager.CountBread();
         StartCoroutine(DayTimer());
 
         LittleGuy[] everyLittleGuy = FindObjectsByType<LittleGuy>(FindObjectsSortMode.None);
@@ -147,7 +163,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnLittleGuys()
     {
-        for (int i = 0; i < littleGuys; i++)
+        for (int i = 0; i < littleGuysSpawnAmount; i++)
         {
             Instantiate(littleGuyPrefab, new Vector2(0, 5), Quaternion.identity);
         }
@@ -155,8 +171,9 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
+        StopAllCoroutines();
         currentDay++;
-        resourceManager.CountBread();
+        missionMaxAdder++;
         UIManager.instance.SummeryObject();
     }
 

@@ -29,7 +29,7 @@ public class LittleGuy : MonoBehaviour
     FarmingNode chosenNode;
     Interactable interactable;
     Pickup[] pickups;
-    Pickup chosenPickup;
+    public Pickup chosenPickup;
     ResourceManager resourceManager;
 
     private void Awake()

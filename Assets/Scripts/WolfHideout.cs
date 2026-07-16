@@ -17,7 +17,7 @@ public class WolfHideout : MonoBehaviour
     {
         while (true)
         {
-            if (currentWolf == null)
+            if (currentWolf == null && GameManager.instance.isDay)
             {
                 currentWolf = Instantiate(wolfPrefab, transform.position - new Vector3(0, 1), Quaternion.identity);
 
